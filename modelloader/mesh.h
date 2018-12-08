@@ -6,9 +6,10 @@
 #define ANIM_MESH_H
 
 #include <vector>
-#include <../assimp/Importer.hpp>
-#include <../assimp/scene.h>
-#include <../assimp/postprocess.h>
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 
 #include "../glad/glad.h"
 
@@ -29,7 +30,6 @@ struct Vertex
     vec2 tex;
     vec3 normal;
 
-    Vertex(){}
     Vertex(const vec3 &pos, const vec2 &tex, const vec3 &normal) : pos(pos), tex(tex), normal(normal){}
 };
 
@@ -38,7 +38,7 @@ public:
     Mesh();
     ~Mesh();
 
-    bool LoadMesh(const std::string &modelfn, std::string &texfn, GLuint shader);
+    bool LoadMesh(const std::string &modelfn, const std::string &texfn, GLuint shader);
 
     void Render();
 
@@ -52,10 +52,12 @@ private:
         ~MeshData();
 
         bool Init(const std::vector<Vertex> &vertices,
-                    const std::vector<unsigned int> &indices);
+                    const std::vector<unsigned int> &indices,
+                    GLuint shader);
 
-        GLuint vb; //vertex buffer
-        GLuint ib; //index buffer
+        GLuint vao; //Vertex array object
+        GLuint vbo; //vertex buffer
+        GLuint ibo; //index buffer
         unsigned int numIndices;
         unsigned int materialIndex;
     };

@@ -5,27 +5,48 @@
 #include "mesh.h"
 
 Mesh::MeshData::MeshData() {
-    vb = -1;
-    ib = -1;
+    vao = -1;
+    vbo = -1;
+    ibo = -1;
     numIndices = 0;
     materialIndex = 0;
 }
 
 Mesh::MeshData::~MeshData() {
-    glDeleteBuffers(1, &vb);
-    glDeleteBuffers(1, &ib);
+    glDeleteBuffers(1, &vbo);
+    glDeleteBuffers(1, &ibo);
 }
 
-bool Mesh::MeshData::Init(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices) {
+bool Mesh::MeshData::Init(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices, GLuint shader) {
     numIndices = indices.size();
 
-    glGenBuffers(1, &vb);
-    glBindBuffer(GL_ARRAY_BUFFER, vb);
+    glUseProgram(shader);
+
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), vertices.data(), GL_STATIC_DRAW);
 
-    glGenBuffers(1, &ib);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib);
+    GLint posAttrib = glGetAttribLocation(shader, "in_position");
+    glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), 0);
+
+    GLint texAttrib = glGetAttribLocation(shader, "in_texCoord");
+    glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *) (3 * sizeof(float)));
+
+    GLint normAttrib = glGetAttribLocation(shader, "in_normal");
+    glVertexAttribPointer(normAttrib, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *) (5 * sizeof(float)));
+
+    glEnableVertexAttribArray(posAttrib);
+    glEnableVertexAttribArray(texAttrib);
+    glEnableVertexAttribArray(normAttrib);
+
+    // Generate Index Array
+    glGenBuffers(1, &ibo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * numIndices, indices.data(), GL_STATIC_DRAW);
+
 }
 
 Mesh::Mesh(){}
@@ -33,7 +54,7 @@ Mesh::Mesh(){}
 Mesh::~Mesh(){
 }
 
-bool Mesh::LoadMesh(const std::string &modelfn, std::string &texfn, GLuint s) {
+bool Mesh::LoadMesh(const std::string &modelfn, const std::string &texfn, GLuint s) {
     shader = s;
     bool success = false;
 
@@ -42,7 +63,7 @@ bool Mesh::LoadMesh(const std::string &modelfn, std::string &texfn, GLuint s) {
     const aiScene *pScene = importer.ReadFile(modelfn.c_str(), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
 
     if(pScene){
-        success = InitFromScene(pScene, modelfn, texfn);
+        success = InitFromScene(pScene, texfn);
     }
     else{
         std::cerr << "Error parsing collada file " << modelfn << importer.GetErrorString() << std::endl;
@@ -56,7 +77,12 @@ bool Mesh::InitFromScene(const aiScene *scene, const std::string &texfn) {
     const aiMesh* mesh = scene->mMeshes[0];
     InitMesh(mesh);
 
-    return InitMaterials(scene, texfn);
+    std::string::size_type dot = texfn.find_last_of('.');
+    std::string::size_type slash = texfn.find_last_of('/');
+
+    std::string samplerID = texfn.substr(slash + 1, dot - slash - 1);
+
+    return InitMaterials(texfn, samplerID, 1);
 }
 
 void Mesh::InitMesh(const aiMesh *inMesh) {
@@ -88,7 +114,7 @@ void Mesh::InitMesh(const aiMesh *inMesh) {
         indices.push_back(face.mIndices[2]);
     }
 
-    mesh.Init(vertices, indices);
+    mesh.Init(vertices, indices, shader);
 }
 
 bool Mesh::InitMaterials(const std::string &texfn, const std::string &samplerID, int i){
@@ -102,15 +128,9 @@ bool Mesh::InitMaterials(const std::string &texfn, const std::string &samplerID,
 }
 
 void Mesh::Render() {
+    glBindVertexArray(mesh.vao);
 
-    //TODO CREATE VAO INSTEAD
-
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-    glEnableVertexAttribArray(2);
-
-    glBindBuffer(GL_ARRAY_BUFFER, )
-
+    glDrawElements(GL_TRIANGLES, mesh.numIndices, GL_UNSIGNED_INT, 0);
 }
 
 

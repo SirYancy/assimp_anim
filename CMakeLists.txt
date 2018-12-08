@@ -1,3 +1,9 @@
+#git clone https://github.com/assimp/assimp.git
+#cd assimp
+#cmake ./
+#make
+#sudo make install
+
 cmake_minimum_required(VERSION 3.5.1)
 project(anim)
 set (CMAKE_CXX_STANDARD 11)
@@ -6,8 +12,9 @@ set (CMAKE_CXX_STANDARD_LIBRARIES "-lSDL2 -lSDL2main -lGL -ldl -I/usr/include/SD
 include_directories(glad)
 add_subdirectory(glm)
 
+find_package(assimp REQUIRED)
+
 file(GLOB SRC
-        assimp/*.*
         modelloader/*.*
         collada/*.*
         tinyxml/*.*
@@ -17,4 +24,4 @@ file(GLOB SRC
 
 
 add_executable(anim ${SRC})
-target_link_libraries(${PROJECT_NAME} SDL2main SDL2)
+target_link_libraries(${PROJECT_NAME} SDL2main SDL2 assimp)
