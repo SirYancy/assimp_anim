@@ -38,14 +38,13 @@ public:
     Mesh();
     ~Mesh();
 
-    bool LoadMesh(const std::string &modelfn, const std::string &texfn, GLuint shader);
+    bool LoadMesh(const std::string &modelfn, GLuint shader, Texture *tex);
 
     void Render();
 
 private:
-    bool InitFromScene(const aiScene *scene, const std::string &texfn);
-    void InitMesh(const aiMesh *inMesh);
-    bool InitMaterials(const std::string &texfn, const std::string &samplerID, int i);
+    bool InitFromScene(const aiScene *scene);
+    bool InitMesh(const aiMesh *inMesh);
 
     struct MeshData{
          MeshData();

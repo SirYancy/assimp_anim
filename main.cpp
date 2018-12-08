@@ -16,7 +16,7 @@ int screenWidth = 800;
 int screenHeight = 600;
 
 const char *modelfn = "../models/cowboy2.dae";
-const char *texfn = "../textures/cowboy.bmp";
+const char *texfn = "../textures/cowboy.png";
 
 const char *vertfn = "../shaders/vert.glsl";
 const char *fragfn = "../shaders/frag.glsl";
@@ -75,18 +75,74 @@ int main(int argc, char *argv[]){
     GLuint fragShader;
     CreateShaderProgram(vertShader, fragShader);
 
+    Texture *t = new Texture(GL_TEXTURE0, texfn, "cowboy", 0);
+    t->Load(shaderProgram);
+
     Mesh *m = new Mesh();
+    m->LoadMesh(modelfn, shaderProgram, t);
 
-    m->LoadMesh(modelfn, texfn, shaderProgram);
+    glEnable(GL_DEPTH_TEST);
 
+    SDL_Event windowEvent;
+    bool quit = false;
+
+    while(!quit) {
+        while (SDL_PollEvent(&windowEvent)) {
+            if (windowEvent.type == SDL_QUIT) quit = true;
+            if (windowEvent.type == SDL_KEYUP) {
+                switch (windowEvent.key.keysym.sym) {
+                    case SDLK_ESCAPE:
+                    case SDLK_q:
+                        quit = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        glClearColor(0.2f, 0.4f, 0.7f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        glUseProgram(shaderProgram);
+
+        GLint unicolor = glGetUniformLocation(shaderProgram, "inColor");
+        glm::vec3 colVec(0.f, 0.7f, 0.f);
+        glUniform3fv(unicolor, 1, glm::value_ptr(colVec));
+
+        glm::mat4 model;
+        GLint uniModel = glGetUniformLocation(shaderProgram, "model");
+        glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model));
+
+        glm::mat4 view = glm::lookAt(
+                glm::vec3(0.0f, -5.f, 7.0f),
+                glm::vec3(0.0f, 0.0f, 7.0f),
+                glm::vec3(0.0f, 0.0f, 1.0f));
+        GLint uniView = glGetUniformLocation(shaderProgram, "view");
+        glUniformMatrix4fv(uniView, 1, GL_FALSE, glm::value_ptr(view));
+
+        glm::mat4 proj = glm::perspective(3.14f / 4, aspect, 0.001f, 1000.0f);
+        GLint uniProj = glGetUniformLocation(shaderProgram, "proj");
+        glUniformMatrix4fv(uniProj, 1, GL_FALSE, glm::value_ptr(proj));
+
+        m->Render();
+
+        SDL_GL_SwapWindow(window);
+    }
+    glDeleteProgram(shaderProgram);
+    glDeleteShader(fragShader);
+    glDeleteShader(vertShader);
+
+    SDL_GL_DeleteContext(context);
+    SDL_Quit();
+
+    return 0;
 }
 
 void CreateShaderProgram(GLuint vertShader, GLuint fragShader) {
 
     vertShader = glCreateShader(GL_VERTEX_SHADER);
     fragShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-    printf("vert: %d\nfrag: %d\n", vertShader, fragShader);
 
     LoadShader(vertfn, vertShader);
     LoadShader(fragfn, fragShader);

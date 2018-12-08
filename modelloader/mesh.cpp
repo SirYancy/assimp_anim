@@ -52,9 +52,11 @@ bool Mesh::MeshData::Init(const std::vector<Vertex> &vertices, const std::vector
 Mesh::Mesh(){}
 
 Mesh::~Mesh(){
+    //TODO
 }
 
-bool Mesh::LoadMesh(const std::string &modelfn, const std::string &texfn, GLuint s) {
+bool Mesh::LoadMesh(const std::string &modelfn, GLuint s, Texture *tex){
+    texture = tex;
     shader = s;
     bool success = false;
 
@@ -63,7 +65,7 @@ bool Mesh::LoadMesh(const std::string &modelfn, const std::string &texfn, GLuint
     const aiScene *pScene = importer.ReadFile(modelfn.c_str(), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
 
     if(pScene){
-        success = InitFromScene(pScene, texfn);
+        success = InitFromScene(pScene);
     }
     else{
         std::cerr << "Error parsing collada file " << modelfn << importer.GetErrorString() << std::endl;
@@ -72,20 +74,13 @@ bool Mesh::LoadMesh(const std::string &modelfn, const std::string &texfn, GLuint
     return success;
 }
 
-bool Mesh::InitFromScene(const aiScene *scene, const std::string &texfn) {
+bool Mesh::InitFromScene(const aiScene *scene) {
 
     const aiMesh* mesh = scene->mMeshes[0];
-    InitMesh(mesh);
-
-    std::string::size_type dot = texfn.find_last_of('.');
-    std::string::size_type slash = texfn.find_last_of('/');
-
-    std::string samplerID = texfn.substr(slash + 1, dot - slash - 1);
-
-    return InitMaterials(texfn, samplerID, 1);
+    return InitMesh(mesh);
 }
 
-void Mesh::InitMesh(const aiMesh *inMesh) {
+bool Mesh::InitMesh(const aiMesh *inMesh) {
 
     mesh.materialIndex = inMesh->mMaterialIndex;
 
@@ -115,21 +110,12 @@ void Mesh::InitMesh(const aiMesh *inMesh) {
     }
 
     mesh.Init(vertices, indices, shader);
-}
-
-bool Mesh::InitMaterials(const std::string &texfn, const std::string &samplerID, int i){
-    texture = new Texture(GL_TEXTURE_2D, texfn.c_str(), samplerID, i);
-    if(!texture->Load(shader)) {
-        std::cerr << "Error loading texture " << texfn << std::endl;
-        return false;
-    }
 
     return true;
 }
 
 void Mesh::Render() {
     glBindVertexArray(mesh.vao);
-
     glDrawElements(GL_TRIANGLES, mesh.numIndices, GL_UNSIGNED_INT, 0);
 }
 

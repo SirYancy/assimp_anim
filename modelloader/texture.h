@@ -11,20 +11,19 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
-
+#include <SDL2/SDL_image.h>
 
 class Texture {
 private:
     std::string filename;
     std::string samplerID;
     int index;
-    GLenum target;
-    GLuint texObject;
+    GLenum texEnum;
+    GLuint texId;
 
 public:
-    Texture(GLenum t, const std::string &fn, const std::string &sampler, int i);
+    Texture(GLenum texture, const std::string &filename, const std::string &samplerID, int index);
     bool Load(GLuint shader);
-    void bind(GLenum unit);
 };
 
 
