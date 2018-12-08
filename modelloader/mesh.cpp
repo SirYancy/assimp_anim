@@ -9,7 +9,6 @@ Mesh::MeshData::MeshData() {
     vbo = -1;
     ibo = -1;
     numIndices = 0;
-    materialIndex = 0;
 }
 
 Mesh::MeshData::~MeshData() {
@@ -17,7 +16,8 @@ Mesh::MeshData::~MeshData() {
     glDeleteBuffers(1, &ibo);
 }
 
-bool Mesh::MeshData::Init(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices, GLuint shader) {
+bool
+Mesh::MeshData::Init(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices, GLuint shader) {
     numIndices = indices.size();
 
     glUseProgram(shader);
@@ -49,25 +49,26 @@ bool Mesh::MeshData::Init(const std::vector<Vertex> &vertices, const std::vector
 
 }
 
-Mesh::Mesh(){}
+Mesh::Mesh() {}
 
-Mesh::~Mesh(){
+Mesh::~Mesh() {
     //TODO
 }
 
-bool Mesh::LoadMesh(const std::string &modelfn, GLuint s, Texture *tex){
+bool Mesh::LoadMesh(const std::string &modelfn, GLuint s, Texture *tex) {
     texture = tex;
     shader = s;
     bool success = false;
 
     Assimp::Importer importer;
 
-    const aiScene *pScene = importer.ReadFile(modelfn.c_str(), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
+    const aiScene *pScene = importer.ReadFile(modelfn.c_str(),
+                                              aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs |
+                                              aiProcess_JoinIdenticalVertices);
 
-    if(pScene){
+    if (pScene) {
         success = InitFromScene(pScene);
-    }
-    else{
+    } else {
         std::cerr << "Error parsing collada file " << modelfn << importer.GetErrorString() << std::endl;
     }
 
@@ -76,32 +77,30 @@ bool Mesh::LoadMesh(const std::string &modelfn, GLuint s, Texture *tex){
 
 bool Mesh::InitFromScene(const aiScene *scene) {
 
-    const aiMesh* mesh = scene->mMeshes[0];
+    const aiMesh *mesh = scene->mMeshes[0];
     return InitMesh(mesh);
 }
 
 bool Mesh::InitMesh(const aiMesh *inMesh) {
-
-    mesh.materialIndex = inMesh->mMaterialIndex;
 
     std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
 
     const aiVector3D noVec(0.f, 0.f, 0.f);
 
-    for(unsigned int i = 0; i < inMesh->mNumVertices; i++){
+    for (unsigned int i = 0; i < inMesh->mNumVertices; i++) {
         const aiVector3D *pPos = &(inMesh->mVertices[i]);
         const aiVector3D *pNormal = &(inMesh->mNormals[i]);
         const aiVector3D *pTex = (inMesh->HasTextureCoords(0) ? &(inMesh->mTextureCoords[0][i]) : &noVec);
 
         Vertex v(vec3(pPos->x, pPos->y, pPos->z),
-                vec2(pTex->x, pTex->y),
-                vec3(pNormal->x, pNormal->y, pNormal->z));
+                 vec2(pTex->x, pTex->y),
+                 vec3(pNormal->x, pNormal->y, pNormal->z));
 
         vertices.push_back(v);
     }
 
-    for(unsigned int i = 0; i < inMesh->mNumFaces; i++){
+    for (unsigned int i = 0; i < inMesh->mNumFaces; i++) {
         const aiFace &face = inMesh->mFaces[i];
         assert(face.mNumIndices == 3);
         indices.push_back(face.mIndices[0]);
@@ -118,9 +117,4 @@ void Mesh::Render() {
     glBindVertexArray(mesh.vao);
     glDrawElements(GL_TRIANGLES, mesh.numIndices, GL_UNSIGNED_INT, 0);
 }
-
-
-
-
-
 

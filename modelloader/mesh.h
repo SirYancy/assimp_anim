@@ -24,18 +24,18 @@
 
 using namespace glm;
 
-struct Vertex
-{
+struct Vertex {
     vec3 pos;
     vec2 tex;
     vec3 normal;
 
-    Vertex(const vec3 &pos, const vec2 &tex, const vec3 &normal) : pos(pos), tex(tex), normal(normal){}
+    Vertex(const vec3 &pos, const vec2 &tex, const vec3 &normal) : pos(pos), tex(tex), normal(normal) {}
 };
 
 class Mesh {
 public:
     Mesh();
+
     ~Mesh();
 
     bool LoadMesh(const std::string &modelfn, GLuint shader, Texture *tex);
@@ -44,21 +44,22 @@ public:
 
 private:
     bool InitFromScene(const aiScene *scene);
+
     bool InitMesh(const aiMesh *inMesh);
 
-    struct MeshData{
-         MeshData();
+    struct MeshData {
+        MeshData();
+
         ~MeshData();
 
         bool Init(const std::vector<Vertex> &vertices,
-                    const std::vector<unsigned int> &indices,
-                    GLuint shader);
+                  const std::vector<unsigned int> &indices,
+                  GLuint shader);
 
         GLuint vao; //Vertex array object
         GLuint vbo; //vertex buffer
-        GLuint ibo; //index buffer
+        GLuint ibo; //textureUnit buffer
         unsigned int numIndices;
-        unsigned int materialIndex;
     };
 
     GLuint shader;

@@ -17,15 +17,14 @@ class Texture {
 private:
     std::string filename;
     std::string samplerID;
-    int index;
+    int textureUnit;
     GLenum texEnum;
     GLuint texId;
 
 public:
     Texture(GLenum texture, const std::string &filename, const std::string &samplerID, int index);
+
     bool Load(GLuint shader);
 };
-
-
 
 #endif //ANIM_TEXTURE_H

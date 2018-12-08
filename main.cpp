@@ -33,7 +33,7 @@ int LoadShader(const char *filename, GLuint shaderID);
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[]) {
 
     SDL_Init(SDL_INIT_VIDEO);
 
@@ -86,7 +86,7 @@ int main(int argc, char *argv[]){
     SDL_Event windowEvent;
     bool quit = false;
 
-    while(!quit) {
+    while (!quit) {
         while (SDL_PollEvent(&windowEvent)) {
             if (windowEvent.type == SDL_QUIT) quit = true;
             if (windowEvent.type == SDL_KEYUP) {
