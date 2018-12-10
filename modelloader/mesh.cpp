@@ -76,7 +76,7 @@ bool Mesh::InitFromScene(const aiScene *scene) {
     glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
     // TEXTURES
-    GLint texAttrib = glGetAttribLocation(shader, "in_texCoors");
+    GLint texAttrib = glGetAttribLocation(shader, "in_texCoord");
     glBindBuffer(GL_ARRAY_BUFFER, texvb);
     glBufferData(GL_ARRAY_BUFFER, sizeof(texcoords[0])*texcoords.size(), texcoords.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
