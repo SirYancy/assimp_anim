@@ -54,8 +54,6 @@ bool Mesh::InitFromScene(const aiScene *scene) {
     uint nIndicies = 0;
 
     mesh.numIndices = scene->mMeshes[0]->mNumFaces * 3;
-    mesh.baseVert = scene->mMeshes[0]->mNumVertices;
-    mesh.baseIndex = mesh.numIndices;
 
     nVertices = scene->mMeshes[0]->mNumVertices;
     nIndicies = mesh.numIndices;
@@ -63,7 +61,7 @@ bool Mesh::InitFromScene(const aiScene *scene) {
     positions.reserve(nVertices);
     normals.reserve(nVertices);
     texcoords.reserve(nVertices);
-    bones.reserve(nVertices);
+    bones.resize(nVertices);
     indices.reserve(nIndicies);
 
     const aiMesh *pMesh = scene->mMeshes[0];
@@ -90,7 +88,7 @@ bool Mesh::InitFromScene(const aiScene *scene) {
     glVertexAttribPointer(normAttrib, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
     // BONESglm rotate with quaternion
-    GLint boneIDAttrib = glGetAttribLocation(shader, "in_boneID");
+    GLint boneIDAttrib = glGetAttribLocation(shader, "in_boneIDs");
     GLint boneWeightAttrib = glGetAttribLocation(shader, "in_boneWeights");
     glBindBuffer(GL_ARRAY_BUFFER, bonevb);
     glBufferData(GL_ARRAY_BUFFER, sizeof(bones[0])*bones.size(), bones.data(), GL_STATIC_DRAW);
@@ -155,7 +153,7 @@ void Mesh::LoadBones(const aiMesh *inMesh, vector<Mesh::VertexBoneData> &bones) 
             index = boneMapping[name];
         }
         for(uint j = 0; j < inMesh->mBones[i]->mNumWeights; j++){
-            uint vID = mesh.baseIndex + inMesh->mBones[i]->mWeights[j].mVertexId;
+            uint vID = inMesh->mBones[i]->mWeights[j].mVertexId;
             float weight = inMesh->mBones[i]->mWeights[j].mWeight;
             bones[vID].AddBoneData(index, weight);
         }
@@ -163,7 +161,11 @@ void Mesh::LoadBones(const aiMesh *inMesh, vector<Mesh::VertexBoneData> &bones) 
 }
 
 void Mesh::Render() {
-    //TODO
+    glBindVertexArray(vao);
+
+    glDrawElements(GL_TRIANGLES, mesh.numIndices, GL_UNSIGNED_INT, 0);
+
+    glBindVertexArray(0);
 }
 
 glm::mat4 Mesh::convertMatrix(const aiMatrix4x4 &mat) {
@@ -189,6 +191,8 @@ void Mesh::BoneTransform(float seconds, vector<mat4> &transforms) {
     float animTime = fmod(timeInTicks, (float)scene->mAnimations[0]->mDuration);
 
     ReadNodeHeirarchy(animTime, scene->mRootNode, identity);
+
+    transforms.resize(numBones);
 
     for(uint i = 0; i < numBones; i++){
         transforms[i] = boneInfor[i].transform;
@@ -235,6 +239,110 @@ void Mesh::ReadNodeHeirarchy(float animTime, const aiNode *node, const mat4 &par
     }
 }
 
+const aiNodeAnim *Mesh::FindNodeAnim(const aiAnimation *animation, const string nodeName) {
+    for (uint i = 0; i < animation->mNumChannels; i++){
+        const aiNodeAnim *node = animation->mChannels[i];
+
+        if(string(node->mNodeName.data) == nodeName){
+            return node;
+        }
+    }
+    return nullptr;
+}
+
+void Mesh::CalcInterpPosition(aiVector3D &out, float animTime, const aiNodeAnim *nodeAnim) {
+
+    if(nodeAnim->mNumPositionKeys == 1){
+        out = nodeAnim->mPositionKeys[0].mValue;
+        return;
+    }
+
+    uint positionIndex = FindPosition(animTime, nodeAnim);
+    uint nextIndex = positionIndex + 1;
+    assert(nextIndex < nodeAnim->mNumPositionKeys);
+    float deltaT = (float)(nodeAnim->mPositionKeys[nextIndex].mTime - nodeAnim->mPositionKeys[positionIndex].mTime);
+    float factor = (animTime - (float)nodeAnim->mPositionKeys[positionIndex].mTime) / deltaT;
+    assert(factor >= 0.0f && factor <= 1.0f);
+    const aiVector3D start = nodeAnim->mPositionKeys[positionIndex].mValue;
+    const aiVector3D end = nodeAnim->mPositionKeys[nextIndex].mValue;
+    aiVector3D delta = end - start;
+    out = start + factor * delta;
+
+}
+
+void Mesh::CalcInterpScaling(aiVector3D &out, float animTime, const aiNodeAnim *nodeAnim) {
+    if(nodeAnim->mNumScalingKeys == 1){
+        out = nodeAnim->mScalingKeys[0].mValue;
+        return;
+    }
+
+    uint scalingIndex = FindScaling(animTime, nodeAnim);
+    uint nextIndex = scalingIndex + 1;
+    assert(nextIndex < nodeAnim->mNumScalingKeys);
+    float deltaT = (float)(nodeAnim->mScalingKeys[nextIndex].mTime - nodeAnim->mScalingKeys[scalingIndex].mTime);
+    float factor = (animTime - (float)nodeAnim->mScalingKeys[scalingIndex].mTime) / deltaT;
+    assert(factor >= 0.0f && factor <= 1.0f);
+    const aiVector3D start = nodeAnim->mScalingKeys[scalingIndex].mValue;
+    const aiVector3D end = nodeAnim->mScalingKeys[nextIndex].mValue;
+    aiVector3D delta = end - start;
+    out = start + factor * delta;
+}
+
+void Mesh::CalcInterpRotating(aiQuaternion &out, float animTime, const aiNodeAnim *nodeAnim) {
+
+    if(nodeAnim->mNumRotationKeys == 1){
+        out = nodeAnim->mRotationKeys[0].mValue;
+        return;
+    }
+
+    uint rotationIndex = FindRotation(animTime, nodeAnim);
+    uint nextIndex = rotationIndex + 1;
+    assert(nextIndex < nodeAnim->mNumRotationKeys);
+    float deltaT = (float)(nodeAnim->mRotationKeys[nextIndex].mTime - nodeAnim->mRotationKeys[rotationIndex].mTime);
+    float factor = (animTime - (float)nodeAnim->mRotationKeys[rotationIndex].mTime) / deltaT;
+    assert(factor >= 0.0f && factor <= 1.0f);
+    const aiQuaternion &start = nodeAnim->mRotationKeys[rotationIndex].mValue;
+    const aiQuaternion &end = nodeAnim->mRotationKeys[nextIndex].mValue;
+    aiQuaternion::Interpolate(out, start, end, factor);
+    out = out.Normalize();
+}
+
+uint Mesh::FindScaling(float animTime, const aiNodeAnim *nodeAnim) {
+    assert(nodeAnim->mNumScalingKeys > 0);
+
+    for(uint i = 0; i < nodeAnim->mNumScalingKeys - 1; i++){
+        if(animTime < (float)nodeAnim->mScalingKeys[i+1].mTime) {
+            return i;
+        }
+    }
+    assert(0);
+    return 0;
+}
+
+uint Mesh::FindRotation(float animTime, const aiNodeAnim *nodeAnim) {
+    assert(nodeAnim->mNumRotationKeys > 0);
+
+    for(uint i = 0; i < nodeAnim->mNumRotationKeys - 1; i++){
+        if(animTime < (float)nodeAnim->mRotationKeys[i+1].mTime) {
+            return i;
+        }
+    }
+    assert(0);
+    return 0;
+}
+
+uint Mesh::FindPosition(float animTime, const aiNodeAnim *nodeAnim) {
+    for(uint i = 0; i < nodeAnim->mNumPositionKeys - 1; i++){
+        if(animTime < (float)nodeAnim->mPositionKeys[i+1].mTime) {
+            return i;
+        }
+    }
+    assert(0);
+    return 0;
+}
+
+
+
 void Mesh::VertexBoneData::AddBoneData(uint boneID, float weight) {
     for(uint i = 0; i < sizeof(IDs) / sizeof(IDs[0]); i++){
         if(weights[i] == 0.0){
@@ -243,7 +351,7 @@ void Mesh::VertexBoneData::AddBoneData(uint boneID, float weight) {
             return;
         }
     }
-
+    return;
     // Should never happen...I hope.
     assert(0);
 }

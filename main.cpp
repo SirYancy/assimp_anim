@@ -79,6 +79,20 @@ int main(int argc, char *argv[]) {
     Mesh *m = new Mesh();
     m->LoadMesh(modelfn, shaderProgram, t);
 
+    GLint boneLocations[100];
+
+    for(unsigned int i = 0; i < (sizeof(boneLocations)/sizeof(boneLocations[0])); i++){
+        char name[128];
+        memset(name, 0, sizeof(name));
+        sprintf(name, "global_bones[%d]", i);
+        boneLocations[i] = glGetUniformLocation(shaderProgram, name);
+
+        if(boneLocations[i] < 0){
+            std::cerr << "Bonelocation error: " << i << " " << boneLocations[i] << std::endl;
+        }
+
+    }
+
     glEnable(GL_DEPTH_TEST);
 
     SDL_Event windowEvent;
@@ -98,6 +112,8 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+
+        float currentFrame = SDL_GetTicks() / 1000.f;
 
         glClearColor(0.2f, 0.4f, 0.7f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -122,6 +138,15 @@ int main(int argc, char *argv[]) {
         glm::mat4 proj = glm::perspective(3.14f / 4, aspect, 0.001f, 1000.0f);
         GLint uniProj = glGetUniformLocation(shaderProgram, "proj");
         glUniformMatrix4fv(uniProj, 1, GL_FALSE, glm::value_ptr(proj));
+
+        vector<mat4> boneTransforms;
+
+        m->BoneTransform(currentFrame, boneTransforms);
+
+        for(int i = 0; i < boneTransforms.size(); i++) {
+            assert(i < 100);
+            glUniformMatrix4fv(boneLocations[i], 1, GL_TRUE, glm::value_ptr(boneTransforms[i]));
+        }
 
         m->Render();
 

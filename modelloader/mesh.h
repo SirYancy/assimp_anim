@@ -58,8 +58,14 @@ private:
     };
 
     struct VertexBoneData{
-        uint IDs[4];
-        float weights[4];
+        uint IDs[4]{};
+        float weights[4]{};
+
+        VertexBoneData()
+        {
+            memset(IDs, 0, sizeof(IDs));
+            memset(weights, 0, sizeof(weights));
+        }
 
         void AddBoneData(uint boneID, float weight);
     };
@@ -98,13 +104,9 @@ private:
         MeshData()
         {
             numIndices = 0;
-            baseVert = 0;
-            baseIndex = 0;
         }
 
         unsigned int numIndices;
-        unsigned int baseVert;
-        unsigned int baseIndex;
     };
 
     GLuint shader;
