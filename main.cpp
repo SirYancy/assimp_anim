@@ -147,7 +147,6 @@ int main(int argc, char *argv[]) {
             assert(i < 100);
             glUniformMatrix4fv(boneLocations[i], 1, GL_TRUE, glm::value_ptr(boneTransforms[i]));
         }
-
         m->Render();
 
         SDL_GL_SwapWindow(window);

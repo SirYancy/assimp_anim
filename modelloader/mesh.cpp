@@ -138,24 +138,26 @@ bool Mesh::InitMesh(const aiMesh *inMesh,
 }
 
 void Mesh::LoadBones(const aiMesh *inMesh, vector<Mesh::VertexBoneData> &bones) {
+    numBones = 0;
     for(uint i = 0; i < inMesh->mNumBones; i++){
-        uint index = 0;
-        string name(inMesh->mBones[i]->mName.data);
+        uint bIndex = 0;
+        string bName(inMesh->mBones[i]->mName.data);
 
-        if(boneMapping.find(name) == boneMapping.end()){
-            index = numBones;
+        if(boneMapping.find(bName) == boneMapping.end()){
+            bIndex = numBones;
             numBones++;
             BoneInfo info;
             boneInfor.push_back(info);
-            boneInfor[index].boneOffset = convertMatrix(inMesh->mBones[i]->mOffsetMatrix);
-            boneMapping[name] = index;
+            boneInfor[bIndex].boneOffset = convertMatrix(inMesh->mBones[i]->mOffsetMatrix);
+            boneMapping[bName] = bIndex;
         } else{
-            index = boneMapping[name];
+            bIndex = boneMapping[bName];
         }
+
         for(uint j = 0; j < inMesh->mBones[i]->mNumWeights; j++){
             uint vID = inMesh->mBones[i]->mWeights[j].mVertexId;
             float weight = inMesh->mBones[i]->mWeights[j].mWeight;
-            bones[vID].AddBoneData(index, weight);
+            bones[vID].AddBoneData(bIndex, weight);
         }
     }
 }

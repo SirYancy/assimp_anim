@@ -20,6 +20,7 @@
 #include "texture.h"
 
 #define GLM_FORCE_RADIANS
+#define GLM_FORCE_CTOR_INIT
 
 #include "../glm/glm.hpp"
 #include "../glm/gtc/matrix_transform.hpp"
@@ -27,6 +28,8 @@
 
 using namespace std;
 using namespace glm;
+
+#define BONES_PER_VERTEX 4
 
 class Mesh {
 public:
@@ -58,8 +61,8 @@ private:
     };
 
     struct VertexBoneData{
-        uint IDs[4]{};
-        float weights[4]{};
+        uint IDs[BONES_PER_VERTEX]{};
+        float weights[BONES_PER_VERTEX]{};
 
         VertexBoneData()
         {
