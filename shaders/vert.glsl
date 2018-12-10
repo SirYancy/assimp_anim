@@ -26,9 +26,9 @@ void main() {
     Color = inColor;
 
     mat4 bonetransform = global_bones[in_boneIDs[0]] * in_boneWeights[0];
-    bonetransform += global_bones[in_boneIDs[1]] * in_boneWeights[1];
-    bonetransform += global_bones[in_boneIDs[2]] * in_boneWeights[2];
-    bonetransform += global_bones[in_boneIDs[3]] * in_boneWeights[3];
+    bonetransform     += global_bones[in_boneIDs[1]] * in_boneWeights[1];
+    bonetransform     += global_bones[in_boneIDs[2]] * in_boneWeights[2];
+    bonetransform     += global_bones[in_boneIDs[3]] * in_boneWeights[3];
 
     vec4 posTransform = bonetransform * vec4(in_position, 1.0);
     gl_Position = proj * view * model * posTransform;
@@ -40,8 +40,7 @@ void main() {
 
     lightDir = (view * vec4(inLightDir, 0.0)).xyz;
 
-    vec4 norm4 = bonetransform * vec4(in_normal, 0.0);
-    norm4 = transpose(inverse(view*model)) * norm4;
+    vec4 norm4 = transpose(inverse(view*model)) * (bonetransform * vec4(in_normal, 0.0));
 
 //    vec4 norm4 = transpose(inverse(view*model)) * vec4(in_normal, 0.0);
 

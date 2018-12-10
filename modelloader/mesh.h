@@ -118,7 +118,7 @@ private:
 
     std::map<std::string, uint> boneMapping;
     uint numBones;
-    vector<BoneInfo> boneInfor;
+    vector<BoneInfo> boneInfo;
     mat4 inverseTransform;
 
     const aiScene *scene;

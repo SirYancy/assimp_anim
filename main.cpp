@@ -15,7 +15,7 @@ bool fullscreen = false;
 int screenWidth = 800;
 int screenHeight = 600;
 
-const char *modelfn = "../models/cowboy2.dae";
+const char *modelfn = "../models/cowboy.dae";
 const char *texfn = "../textures/cowboy.png";
 
 const char *vertfn = "../shaders/vert.glsl";

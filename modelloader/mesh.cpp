@@ -147,8 +147,8 @@ void Mesh::LoadBones(const aiMesh *inMesh, vector<Mesh::VertexBoneData> &bones) 
             bIndex = numBones;
             numBones++;
             BoneInfo info;
-            boneInfor.push_back(info);
-            boneInfor[bIndex].boneOffset = convertMatrix(inMesh->mBones[i]->mOffsetMatrix);
+            boneInfo.push_back(info);
+            boneInfo[bIndex].boneOffset = convertMatrix(inMesh->mBones[i]->mOffsetMatrix);
             boneMapping[bName] = bIndex;
         } else{
             bIndex = boneMapping[bName];
@@ -197,7 +197,7 @@ void Mesh::BoneTransform(float seconds, vector<mat4> &transforms) {
     transforms.resize(numBones);
 
     for(uint i = 0; i < numBones; i++){
-        transforms[i] = boneInfor[i].transform;
+        transforms[i] = boneInfo[i].transform;
     }
 }
 
@@ -233,7 +233,7 @@ void Mesh::ReadNodeHeirarchy(float animTime, const aiNode *node, const mat4 &par
 
     if(boneMapping.find(nodeName) != boneMapping.end()){
         uint boneIndex = boneMapping[nodeName];
-        boneInfor[boneIndex].transform = inverseTransform * globalTransformation * boneInfor[boneIndex].boneOffset;
+        boneInfo[boneIndex].transform = inverseTransform * globalTransformation * boneInfo[boneIndex].boneOffset;
     }
 
     for(uint i = 0; i < node->mNumChildren; i++){
