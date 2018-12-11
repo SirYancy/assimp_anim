@@ -129,8 +129,8 @@ int main(int argc, char *argv[]) {
         glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model));
 
         glm::mat4 view = glm::lookAt(
-                glm::vec3(0.0f, -20.f, 7.0f),
-                glm::vec3(0.0f, 0.0f, 7.0f),
+                glm::vec3(0.0f, -40.f, 3.0f),
+                glm::vec3(0.0f, 0.0f, 4.0f),
                 glm::vec3(0.0f, 0.0f, 1.0f));
         GLint uniView = glGetUniformLocation(shaderProgram, "view");
         glUniformMatrix4fv(uniView, 1, GL_FALSE, glm::value_ptr(view));

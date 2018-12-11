@@ -81,7 +81,7 @@ private:
     uint FindRotation(float animTime, const aiNodeAnim *nodeAnim);
     uint FindPosition(float animTime, const aiNodeAnim *nodeAnim);
     const aiNodeAnim *FindNodeAnim(const aiAnimation *animation, const string nodeName);
-    void ReadNodeHeirarchy(float animTime, const aiNode *node, const mat4 &parentTransform);
+    void ReadNodeHierarchy(float animTime, const aiNode *node, const mat4 &parentTransform);
 
     //Initialization
     bool InitFromScene(const aiScene *scene);

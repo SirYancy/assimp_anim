@@ -29,8 +29,7 @@ bool Mesh::LoadMesh(const std::string &modelfn, GLuint s, Texture *tex) {
                               aiProcess_JoinIdenticalVertices);
 
     if (scene) {
-        inverseTransform = convertMatrix(scene->mRootNode->mTransformation);
-        inverseTransform = glm::inverse(inverseTransform);
+        inverseTransform = glm::inverse(convertMatrix(scene->mRootNode->mTransformation));
         success = InitFromScene(scene);
     } else {
         std::cerr << "Error parsing collada file " << modelfn << importer.GetErrorString() << std::endl;
@@ -172,11 +171,17 @@ void Mesh::Render() {
 
 glm::mat4 Mesh::convertMatrix(const aiMatrix4x4 &mat) {
     return {
-            mat.a1, mat.b1, mat.c1, mat.d1,
-            mat.a2, mat.b2, mat.c2, mat.d2,
-            mat.a3, mat.b3, mat.c3, mat.d3,
-            mat.a4, mat.b4, mat.c4, mat.d4
+        mat.a1, mat.a2, mat.a3, mat.a4,
+        mat.b1, mat.b2, mat.b3, mat.b4,
+        mat.c1, mat.c2, mat.c3, mat.c4,
+        mat.d1, mat.d2, mat.d3, mat.d4,
     };
+//    return {
+//            mat.a1, mat.b1, mat.c1, mat.d1,
+//            mat.a2, mat.b2, mat.c2, mat.d2,
+//            mat.a3, mat.b3, mat.c3, mat.d3,
+//            mat.a4, mat.b4, mat.c4, mat.d4
+//    };
 }
 
 glm::quat Mesh::convertQuaternion(const aiQuaternion &quat) {
@@ -192,7 +197,7 @@ void Mesh::BoneTransform(float seconds, vector<mat4> &transforms) {
     float timeInTicks = seconds * ticksPerSecond;
     float animTime = fmod(timeInTicks, (float)scene->mAnimations[0]->mDuration);
 
-    ReadNodeHeirarchy(animTime, scene->mRootNode, identity);
+    ReadNodeHierarchy(animTime, scene->mRootNode, identity);
 
     transforms.resize(numBones);
 
@@ -201,7 +206,7 @@ void Mesh::BoneTransform(float seconds, vector<mat4> &transforms) {
     }
 }
 
-void Mesh::ReadNodeHeirarchy(float animTime, const aiNode *node, const mat4 &parentTransform) {
+void Mesh::ReadNodeHierarchy(float animTime, const aiNode *node, const mat4 &parentTransform) {
     string nodeName(node->mName.data);
     const aiAnimation *animation = scene->mAnimations[0];
     mat4 nodeTransformation(convertMatrix(node->mTransformation));
@@ -237,7 +242,7 @@ void Mesh::ReadNodeHeirarchy(float animTime, const aiNode *node, const mat4 &par
     }
 
     for(uint i = 0; i < node->mNumChildren; i++){
-        ReadNodeHeirarchy(animTime, node->mChildren[i], globalTransformation);
+        ReadNodeHierarchy(animTime, node->mChildren[i], globalTransformation);
     }
 }
 
@@ -342,8 +347,6 @@ uint Mesh::FindPosition(float animTime, const aiNodeAnim *nodeAnim) {
     assert(0);
     return 0;
 }
-
-
 
 void Mesh::VertexBoneData::AddBoneData(uint boneID, float weight) {
     for(uint i = 0; i < sizeof(IDs) / sizeof(IDs[0]); i++){
