@@ -269,7 +269,7 @@ void Mesh::CalcInterpPosition(aiVector3D &out, float animTime, const aiNodeAnim 
     assert(nextIndex < nodeAnim->mNumPositionKeys);
     float deltaT = (float)(nodeAnim->mPositionKeys[nextIndex].mTime - nodeAnim->mPositionKeys[positionIndex].mTime);
     float factor = (animTime - (float)nodeAnim->mPositionKeys[positionIndex].mTime) / deltaT;
-    assert(factor >= 0.0f && factor <= 1.0f);
+//    assert(factor >= 0.0f && factor <= 1.0f);
     const aiVector3D start = nodeAnim->mPositionKeys[positionIndex].mValue;
     const aiVector3D end = nodeAnim->mPositionKeys[nextIndex].mValue;
     aiVector3D delta = end - start;
@@ -288,7 +288,8 @@ void Mesh::CalcInterpScaling(aiVector3D &out, float animTime, const aiNodeAnim *
     assert(nextIndex < nodeAnim->mNumScalingKeys);
     float deltaT = (float)(nodeAnim->mScalingKeys[nextIndex].mTime - nodeAnim->mScalingKeys[scalingIndex].mTime);
     float factor = (animTime - (float)nodeAnim->mScalingKeys[scalingIndex].mTime) / deltaT;
-    assert(factor >= 0.0f && factor <= 1.0f);
+//    printf("FACTOR: %f\n", factor);
+//    assert(factor >= 0.0f && factor <= 1.0f);
     const aiVector3D start = nodeAnim->mScalingKeys[scalingIndex].mValue;
     const aiVector3D end = nodeAnim->mScalingKeys[nextIndex].mValue;
     aiVector3D delta = end - start;
@@ -307,7 +308,7 @@ void Mesh::CalcInterpRotating(aiQuaternion &out, float animTime, const aiNodeAni
     assert(nextIndex < nodeAnim->mNumRotationKeys);
     float deltaT = (float)(nodeAnim->mRotationKeys[nextIndex].mTime - nodeAnim->mRotationKeys[rotationIndex].mTime);
     float factor = (animTime - (float)nodeAnim->mRotationKeys[rotationIndex].mTime) / deltaT;
-    assert(factor >= 0.0f && factor <= 1.0f);
+//    assert(factor >= 0.0f && factor <= 1.0f);
     const aiQuaternion &start = nodeAnim->mRotationKeys[rotationIndex].mValue;
     const aiQuaternion &end = nodeAnim->mRotationKeys[nextIndex].mValue;
     aiQuaternion::Interpolate(out, start, end, factor);
@@ -356,7 +357,6 @@ void Mesh::VertexBoneData::AddBoneData(uint boneID, float weight) {
             return;
         }
     }
-    return;
     // Should never happen...I hope.
     assert(0);
 }
