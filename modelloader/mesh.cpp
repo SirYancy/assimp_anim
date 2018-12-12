@@ -175,7 +175,7 @@ void Mesh::Render() {
 }
 
 glm::mat4 Mesh::convertMatrix(const aiMatrix4x4 &mat) {
-    return (glm::make_mat4(&mat.a1));
+    return glm::make_mat4(&mat.a1);
 //    return {
 //        mat.a1, mat.a2, mat.a3, mat.a4,
 //        mat.b1, mat.b2, mat.b3, mat.b4,
@@ -221,8 +221,8 @@ void Mesh::BoneTransform(float seconds, vector<mat4> &transforms) {
 
 void Mesh::ReadNodeHierarchy(float animTime, const aiNode *node, const mat4 &parentTransform) {
     string nodeName(node->mName.data);
-    const aiAnimation *animation = scene->mAnimations[0];
-    mat4 nodeTransformation(convertMatrix(node->mTransformation));
+    const aiAnimation *animation = scene->mAnimations[0]; // Only one animation per model...
+    mat4 nodeTransformation = convertMatrix(node->mTransformation);
 
     const aiNodeAnim *nodeAnim = FindNodeAnim(animation, nodeName);
 
