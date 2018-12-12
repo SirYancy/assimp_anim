@@ -33,7 +33,7 @@ bool Mesh::LoadMesh(const std::string &modelfn, GLuint s, Texture *tex) {
                               aiProcess_JoinIdenticalVertices);
 
     if (scene) {
-        inverseTransform = glm::inverse(convertMatrix(scene->mRootNode->mTransformation));
+        inverseTransform = scene->mRootNode->mTransformation;
         success = InitFromScene(scene);
     } else {
         std::cerr << "Error parsing collada file " << modelfn << importer.GetErrorString() << std::endl;
@@ -152,7 +152,7 @@ void Mesh::LoadBones(const aiMesh *inMesh, vector<Mesh::VertexBoneData> &bones) 
             numBones++;
             BoneInfo info;
             boneInfo.push_back(info);
-            boneInfo[bIndex].boneOffset = convertMatrix(pBone->mOffsetMatrix);
+            boneInfo[bIndex].boneOffset = pBone->mOffsetMatrix;
             boneMapping[bName] = bIndex;
         } else{
             bIndex = boneMapping[bName];
@@ -204,7 +204,7 @@ glm::vec3 Mesh::convertVector(const aiVector3D &vec) {
 
 
 void Mesh::BoneTransform(float seconds, vector<mat4> &transforms) {
-    mat4 identity = mat4();
+    aiMatrix4x4 identity = aiMatrix4x4(); // Sets to identity
 
     float ticksPerSecond = (float)(scene->mAnimations[0]->mTicksPerSecond != 0 ? scene->mAnimations[0]->mTicksPerSecond : 25.0f);
     float timeInTicks = seconds * ticksPerSecond;
@@ -215,43 +215,46 @@ void Mesh::BoneTransform(float seconds, vector<mat4> &transforms) {
     transforms.resize(numBones);
 
     for(uint i = 0; i < numBones; i++){
-        transforms[i] = boneInfo[i].finalTransform;
+        transforms[i] = convertMatrix(boneInfo[i].finalTransform);
     }
 }
 
-void Mesh::ReadNodeHierarchy(float animTime, const aiNode *node, const mat4 &parentTransform) {
+void Mesh::ReadNodeHierarchy(float animTime, const aiNode *node, const aiMatrix4x4 &parentTransform) {
     string nodeName(node->mName.data);
     const aiAnimation *animation = scene->mAnimations[0]; // Only one animation per model...
-    mat4 nodeTransformation = convertMatrix(node->mTransformation);
+    aiMatrix4x4 nodeTransformation = node->mTransformation;
 
     const aiNodeAnim *nodeAnim = FindNodeAnim(animation, nodeName);
 
     if(nodeAnim) {
+        aiMatrix4x4 scalingMat;
+        aiMatrix4x4 rotateMat;
+        aiMatrix4x4 translateMat;
+
         // Scaling transformation
-        vec3 scaling;
+        aiVector3D scaling;
         CalcInterpScaling(scaling, animTime, nodeAnim);
-        mat4 scalingMat;
-        glm::scale(scalingMat, vec3(scaling.x, scaling.y, scaling.z));
+        aiMatrix4x4::Scaling(scaling, scalingMat);
 
         // Rotation Transform
-        quat quatRotation;
+        aiQuaternion quatRotation;
         CalcInterpRotating(quatRotation, animTime, nodeAnim);
-        mat4 rotationMat = glm::mat4_cast(quatRotation);
+        rotateMat = aiMatrix4x4(quatRotation.GetMatrix());
+
 
         // Translation Transform
-        vec3 translation;
+        aiVector3D translation;
         CalcInterpPosition(translation, animTime, nodeAnim);
-        mat4 transMat;
-        glm::translate(transMat, vec3(translation.x, translation.y, translation.z));
+        aiMatrix4x4::Translation(translation, translateMat);
 
-        nodeTransformation = transMat * rotationMat * scalingMat;
+        nodeTransformation = translateMat * rotateMat * scalingMat;
     }
 
-    mat4 globalTransformation = parentTransform * nodeTransformation;
+    aiMatrix4x4 globalTransformation = parentTransform * nodeTransformation;
 
     if(boneMapping.find(nodeName) != boneMapping.end()){
         uint boneIndex = boneMapping[nodeName];
-        boneInfo[boneIndex].finalTransform = inverseTransform * globalTransformation * boneInfo[boneIndex].boneOffset;
+        boneInfo[boneIndex].finalTransform =  inverseTransform * globalTransformation * boneInfo[boneIndex].boneOffset;
     }
 
     for(uint i = 0; i < node->mNumChildren; i++){
@@ -270,10 +273,10 @@ const aiNodeAnim *Mesh::FindNodeAnim(const aiAnimation *animation, const string 
     return nullptr;
 }
 
-void Mesh::CalcInterpPosition(glm::vec3 &out, float animTime, const aiNodeAnim *nodeAnim) {
+void Mesh::CalcInterpPosition(aiVector3D &out, float animTime, const aiNodeAnim *nodeAnim) {
 
     if(nodeAnim->mNumPositionKeys == 1){
-        out = convertVector(nodeAnim->mPositionKeys[0].mValue);
+        out = nodeAnim->mPositionKeys[0].mValue;
         return;
     }
 
@@ -283,16 +286,16 @@ void Mesh::CalcInterpPosition(glm::vec3 &out, float animTime, const aiNodeAnim *
     float deltaT = (float)(nodeAnim->mPositionKeys[nextIndex].mTime - nodeAnim->mPositionKeys[positionIndex].mTime);
     float factor = (animTime - (float)nodeAnim->mPositionKeys[positionIndex].mTime) / deltaT;
 //    assert(factor >= 0.0f && factor <= 1.0f);
-    const vec3 start = convertVector(nodeAnim->mPositionKeys[positionIndex].mValue);
-    const vec3 end = convertVector(nodeAnim->mPositionKeys[nextIndex].mValue);
-    vec3 delta = end - start;
+    const aiVector3D start = nodeAnim->mPositionKeys[positionIndex].mValue;
+    const aiVector3D end = nodeAnim->mPositionKeys[nextIndex].mValue;
+    aiVector3D delta = end - start;
     out = start + factor * delta;
 
 }
 
-void Mesh::CalcInterpScaling(glm::vec3 &out, float animTime, const aiNodeAnim *nodeAnim) {
+void Mesh::CalcInterpScaling(aiVector3D &out, float animTime, const aiNodeAnim *nodeAnim) {
     if(nodeAnim->mNumScalingKeys == 1){
-        out = convertVector(nodeAnim->mScalingKeys[0].mValue);
+        out = nodeAnim->mScalingKeys[0].mValue;
         return;
     }
 
@@ -303,16 +306,16 @@ void Mesh::CalcInterpScaling(glm::vec3 &out, float animTime, const aiNodeAnim *n
     float factor = (animTime - (float)nodeAnim->mScalingKeys[scalingIndex].mTime) / deltaT;
 //    printf("FACTOR: %f\n", factor);
 //    assert(factor >= 0.0f && factor <= 1.0f);
-    const vec3 start = convertVector(nodeAnim->mScalingKeys[scalingIndex].mValue);
-    const vec3 end = convertVector(nodeAnim->mScalingKeys[nextIndex].mValue);
-    vec3 delta = end - start;
+    const aiVector3D start = nodeAnim->mScalingKeys[scalingIndex].mValue;
+    const aiVector3D end = nodeAnim->mScalingKeys[nextIndex].mValue;
+    aiVector3D delta = end - start;
     out = start + factor * delta;
 }
 
-void Mesh::CalcInterpRotating(glm::quat &out, float animTime, const aiNodeAnim *nodeAnim) {
+void Mesh::CalcInterpRotating(aiQuaternion &out, float animTime, const aiNodeAnim *nodeAnim) {
 
     if(nodeAnim->mNumRotationKeys == 1){
-        out = convertQuaternion(nodeAnim->mRotationKeys[0].mValue);
+        out = nodeAnim->mRotationKeys[0].mValue;
         return;
     }
 
@@ -324,9 +327,8 @@ void Mesh::CalcInterpRotating(glm::quat &out, float animTime, const aiNodeAnim *
 //    assert(factor >= 0.0f && factor <= 1.0f);
     const aiQuaternion &start = nodeAnim->mRotationKeys[rotationIndex].mValue;
     const aiQuaternion &end = nodeAnim->mRotationKeys[nextIndex].mValue;
-    aiQuaternion o;
-    aiQuaternion::Interpolate(o, start, end, factor);
-    out = convertQuaternion(o);
+    aiQuaternion::Interpolate(out, start, end, factor);
+    out = out.Normalize();
 }
 
 uint Mesh::FindScaling(float animTime, const aiNodeAnim *nodeAnim) {

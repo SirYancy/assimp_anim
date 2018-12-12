@@ -15,8 +15,8 @@ bool fullscreen = false;
 int screenWidth = 800;
 int screenHeight = 600;
 
-const char *modelfn = "../models/cube2.dae";
-const char *texfn = "../textures/spaceman.bmp";
+const char *modelfn = "../models/cowboy2.dae";
+const char *texfn = "../textures/cowboy.bmp";
 
 const char *vertfn = "../shaders/vert.glsl";
 const char *fragfn = "../shaders/frag.glsl";
@@ -129,8 +129,8 @@ int main(int argc, char *argv[]) {
         glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model));
 
         glm::mat4 view = glm::lookAt(
-                glm::vec3(0.0f, -20.f, 1.0f),
-                glm::vec3(0.0f, 0.0f, 1.0f),
+                glm::vec3(0.0f, -20.f, -1.0f),
+                glm::vec3(0.0f, 0.0f, -1.0f),
                 glm::vec3(0.0f, 0.0f, 1.0f));
         GLint uniView = glGetUniformLocation(shaderProgram, "view");
         glUniformMatrix4fv(uniView, 1, GL_FALSE, glm::value_ptr(view));
