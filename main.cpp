@@ -15,8 +15,8 @@ bool fullscreen = false;
 int screenWidth = 800;
 int screenHeight = 600;
 
-const char *modelfn = "../models/cube2.dae";
-const char *texfn = "../textures/cowboy.png";
+const char *modelfn = "../models/spaceman.dae";
+const char *texfn = "../textures/spaceman.bmp";
 
 const char *vertfn = "../shaders/vert.glsl";
 const char *fragfn = "../shaders/frag.glsl";
