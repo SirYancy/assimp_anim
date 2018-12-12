@@ -33,7 +33,7 @@ bool Mesh::LoadMesh(const std::string &modelfn, GLuint s, Texture *tex) {
                               aiProcess_JoinIdenticalVertices);
 
     if (scene) {
-        inverseTransform = scene->mRootNode->mTransformation;
+        inverseTransform = scene->mRootNode->mTransformation.Inverse();
         success = InitFromScene(scene);
     } else {
         std::cerr << "Error parsing collada file " << modelfn << importer.GetErrorString() << std::endl;
@@ -175,19 +175,7 @@ void Mesh::Render() {
 }
 
 glm::mat4 Mesh::convertMatrix(const aiMatrix4x4 &mat) {
-    return glm::make_mat4(&mat.a1);
-//    return {
-//        mat.a1, mat.a2, mat.a3, mat.a4,
-//        mat.b1, mat.b2, mat.b3, mat.b4,
-//        mat.c1, mat.c2, mat.c3, mat.c4,
-//        mat.d1, mat.d2, mat.d3, mat.d4,
-//    };
-//    return {
-//            mat.a1, mat.b1, mat.c1, mat.d1,
-//            mat.a2, mat.b2, mat.c2, mat.d2,
-//            mat.a3, mat.b3, mat.c3, mat.d3,
-//            mat.a4, mat.b4, mat.c4, mat.d4
-//    };
+    return (glm::make_mat4(&mat.a1));
 }
 
 glm::quat Mesh::convertQuaternion(const aiQuaternion &quat) {
@@ -232,6 +220,7 @@ void Mesh::ReadNodeHierarchy(float animTime, const aiNode *node, const aiMatrix4
         aiMatrix4x4 translateMat;
 
         // Scaling transformation
+        // Don't really need scaling, but it is included here for completeness.
         aiVector3D scaling;
         CalcInterpScaling(scaling, animTime, nodeAnim);
         aiMatrix4x4::Scaling(scaling, scalingMat);
@@ -247,7 +236,7 @@ void Mesh::ReadNodeHierarchy(float animTime, const aiNode *node, const aiMatrix4
         CalcInterpPosition(translation, animTime, nodeAnim);
         aiMatrix4x4::Translation(translation, translateMat);
 
-        nodeTransformation = translateMat * rotateMat * scalingMat;
+        nodeTransformation = scalingMat * rotateMat * translateMat;
     }
 
     aiMatrix4x4 globalTransformation = parentTransform * nodeTransformation;

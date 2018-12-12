@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0</authoring_tool>
     </contributor>
-    <created>2018-12-11T22:19:10</created>
-    <modified>2018-12-11T22:19:10</modified>
+    <created>2018-12-12T16:36:25</created>
+    <modified>2018-12-12T16:36:25</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -24,9 +24,9 @@
       </optics>
       <extra>
         <technique profile="blender">
-          <YF_dofdist>0</YF_dofdist>
-          <shiftx>0</shiftx>
-          <shifty>0</shifty>
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <YF_dofdist sid="YF_dofdist" type="float">0</YF_dofdist>
         </technique>
       </extra>
     </camera>
@@ -43,60 +43,60 @@
       </technique_common>
       <extra>
         <technique profile="blender">
-          <adapt_thresh>0.000999987</adapt_thresh>
-          <area_shape>1</area_shape>
-          <area_size>0.1</area_size>
-          <area_sizey>0.1</area_sizey>
-          <area_sizez>1</area_sizez>
-          <atm_distance_factor>1</atm_distance_factor>
-          <atm_extinction_factor>1</atm_extinction_factor>
-          <atm_turbidity>2</atm_turbidity>
-          <att1>0</att1>
-          <att2>1</att2>
-          <backscattered_light>1</backscattered_light>
-          <bias>1</bias>
-          <blue>1</blue>
-          <buffers>1</buffers>
-          <bufflag>0</bufflag>
-          <bufsize>2880</bufsize>
-          <buftype>2</buftype>
-          <clipend>30.002</clipend>
-          <clipsta>1.000799</clipsta>
-          <compressthresh>0.04999995</compressthresh>
-          <dist sid="blender_dist">29.99998</dist>
-          <energy sid="blender_energy">1</energy>
-          <falloff_type>2</falloff_type>
-          <filtertype>0</filtertype>
-          <flag>0</flag>
-          <gamma sid="blender_gamma">1</gamma>
-          <green>1</green>
-          <halo_intensity sid="blnder_halo_intensity">1</halo_intensity>
-          <horizon_brightness>1</horizon_brightness>
-          <mode>8192</mode>
-          <ray_samp>1</ray_samp>
-          <ray_samp_method>1</ray_samp_method>
-          <ray_samp_type>0</ray_samp_type>
-          <ray_sampy>1</ray_sampy>
-          <ray_sampz>1</ray_sampz>
-          <red>1</red>
-          <samp>3</samp>
-          <shadhalostep>0</shadhalostep>
-          <shadow_b sid="blender_shadow_b">0</shadow_b>
-          <shadow_g sid="blender_shadow_g">0</shadow_g>
-          <shadow_r sid="blender_shadow_r">0</shadow_r>
-          <sky_colorspace>0</sky_colorspace>
-          <sky_exposure>1</sky_exposure>
-          <skyblendfac>1</skyblendfac>
-          <skyblendtype>1</skyblendtype>
-          <soft>3</soft>
-          <spotblend>0.15</spotblend>
-          <spotsize>75</spotsize>
-          <spread>1</spread>
-          <sun_brightness>1</sun_brightness>
-          <sun_effect_type>0</sun_effect_type>
-          <sun_intensity>1</sun_intensity>
-          <sun_size>1</sun_size>
-          <type>0</type>
+          <type sid="type" type="int">0</type>
+          <flag sid="flag" type="int">0</flag>
+          <mode sid="mode" type="int">8192</mode>
+          <gamma sid="blender_gamma" type="float">1</gamma>
+          <red sid="red" type="float">1</red>
+          <green sid="green" type="float">1</green>
+          <blue sid="blue" type="float">1</blue>
+          <shadow_r sid="blender_shadow_r" type="float">0</shadow_r>
+          <shadow_g sid="blender_shadow_g" type="float">0</shadow_g>
+          <shadow_b sid="blender_shadow_b" type="float">0</shadow_b>
+          <energy sid="blender_energy" type="float">1</energy>
+          <dist sid="blender_dist" type="float">29.99998</dist>
+          <spotsize sid="spotsize" type="float">75</spotsize>
+          <spotblend sid="spotblend" type="float">0.15</spotblend>
+          <halo_intensity sid="blnder_halo_intensity" type="float">1</halo_intensity>
+          <att1 sid="att1" type="float">0</att1>
+          <att2 sid="att2" type="float">1</att2>
+          <falloff_type sid="falloff_type" type="int">2</falloff_type>
+          <clipsta sid="clipsta" type="float">1.000799</clipsta>
+          <clipend sid="clipend" type="float">30.002</clipend>
+          <bias sid="bias" type="float">1</bias>
+          <soft sid="soft" type="float">3</soft>
+          <compressthresh sid="compressthresh" type="float">0.04999995</compressthresh>
+          <bufsize sid="bufsize" type="int">2880</bufsize>
+          <samp sid="samp" type="int">3</samp>
+          <buffers sid="buffers" type="int">1</buffers>
+          <filtertype sid="filtertype" type="int">0</filtertype>
+          <bufflag sid="bufflag" type="int">0</bufflag>
+          <buftype sid="buftype" type="int">2</buftype>
+          <ray_samp sid="ray_samp" type="int">1</ray_samp>
+          <ray_sampy sid="ray_sampy" type="int">1</ray_sampy>
+          <ray_sampz sid="ray_sampz" type="int">1</ray_sampz>
+          <ray_samp_type sid="ray_samp_type" type="int">0</ray_samp_type>
+          <area_shape sid="area_shape" type="int">1</area_shape>
+          <area_size sid="area_size" type="float">0.1</area_size>
+          <area_sizey sid="area_sizey" type="float">0.1</area_sizey>
+          <area_sizez sid="area_sizez" type="float">1</area_sizez>
+          <adapt_thresh sid="adapt_thresh" type="float">0.000999987</adapt_thresh>
+          <ray_samp_method sid="ray_samp_method" type="int">1</ray_samp_method>
+          <shadhalostep sid="shadhalostep" type="int">0</shadhalostep>
+          <sun_effect_type sid="sun_effect_type" type="int">0</sun_effect_type>
+          <skyblendtype sid="skyblendtype" type="int">1</skyblendtype>
+          <horizon_brightness sid="horizon_brightness" type="float">1</horizon_brightness>
+          <spread sid="spread" type="float">1</spread>
+          <sun_brightness sid="sun_brightness" type="float">1</sun_brightness>
+          <sun_size sid="sun_size" type="float">1</sun_size>
+          <backscattered_light sid="backscattered_light" type="float">1</backscattered_light>
+          <sun_intensity sid="sun_intensity" type="float">1</sun_intensity>
+          <atm_turbidity sid="atm_turbidity" type="float">2</atm_turbidity>
+          <atm_extinction_factor sid="atm_extinction_factor" type="float">1</atm_extinction_factor>
+          <atm_distance_factor sid="atm_distance_factor" type="float">1</atm_distance_factor>
+          <skyblendfac sid="skyblendfac" type="float">1</skyblendfac>
+          <sky_exposure sid="sky_exposure" type="float">1</sky_exposure>
+          <sky_colorspace sid="sky_colorspace" type="int">0</sky_colorspace>
         </technique>
       </extra>
     </light>
@@ -158,23 +158,13 @@
             </accessor>
           </technique_common>
         </source>
-        <source id="Cube-mesh-map-0">
-          <float_array id="Cube-mesh-map-0-array" count="1920">0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1 0 0 1 0 1 1</float_array>
-          <technique_common>
-            <accessor source="#Cube-mesh-map-0-array" count="960" stride="2">
-              <param name="S" type="float"/>
-              <param name="T" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
         <vertices id="Cube-mesh-vertices">
           <input semantic="POSITION" source="#Cube-mesh-positions"/>
         </vertices>
         <triangles material="Material-material" count="320">
           <input semantic="VERTEX" source="#Cube-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Cube-mesh-normals" offset="1"/>
-          <input semantic="TEXCOORD" source="#Cube-mesh-map-0" offset="2" set="0"/>
-          <p>57 0 0 37 0 1 39 0 2 10 1 3 3 1 4 11 1 5 86 2 6 4 2 7 72 2 8 9 3 9 4 3 10 8 3 11 89 4 12 5 4 13 9 4 14 10 5 15 78 5 16 92 5 17 3 6 18 93 6 19 11 6 20 67 7 21 59 7 22 68 7 23 19 8 24 21 8 25 17 8 26 72 9 27 57 9 28 139 9 29 73 10 30 56 10 31 5 10 32 145 11 33 66 11 34 58 11 35 2 12 36 89 12 37 9 12 38 2 13 39 8 13 40 3 13 41 3 14 42 86 14 43 81 14 44 11 15 45 79 15 46 13 15 47 2 16 48 92 16 49 80 16 50 10 17 51 13 17 52 12 17 53 0 18 54 13 18 55 1 18 56 14 19 57 12 19 58 0 19 59 15 20 60 13 20 61 79 20 62 14 21 63 79 21 64 78 21 65 15 22 66 17 22 67 16 22 68 0 23 69 17 23 70 14 23 71 15 24 72 18 24 73 1 24 74 1 25 75 19 25 76 0 25 77 23 26 78 26 26 79 27 26 80 19 27 81 22 27 82 23 27 83 18 28 84 20 28 85 22 28 86 17 29 87 20 29 88 16 29 89 24 30 90 27 30 91 26 30 92 21 31 93 24 31 94 20 31 95 26 32 96 29 32 97 31 32 98 23 33 99 25 33 100 21 33 101 30 34 102 32 34 103 28 34 104 24 35 105 31 35 106 30 35 107 24 36 108 28 36 109 20 36 110 22 37 111 28 37 112 29 37 113 33 38 114 34 38 115 35 38 116 31 39 117 34 39 118 30 39 119 31 40 120 33 40 121 35 40 122 29 41 123 32 41 124 33 41 125 36 42 126 42 42 127 40 42 128 57 43 129 38 43 130 56 43 131 56 44 132 36 44 133 5 44 134 5 45 135 37 45 136 4 45 137 43 46 138 45 46 139 47 46 140 37 47 141 40 47 142 41 47 143 37 48 144 43 48 145 39 48 146 39 49 147 42 49 148 38 49 149 46 50 150 48 50 151 44 50 152 43 51 153 46 51 154 42 51 155 42 52 156 44 52 157 40 52 158 41 53 159 44 53 160 45 53 161 48 54 162 54 54 163 52 54 164 44 55 165 49 55 166 45 55 167 45 56 168 51 56 169 47 56 170 46 57 171 51 57 172 50 57 173 53 58 174 54 58 175 55 58 176 49 59 177 52 59 178 53 59 179 49 60 180 55 60 181 51 60 182 51 61 183 54 61 184 50 61 185 7 62 186 57 62 187 56 62 188 6 63 189 139 63 190 57 63 191 7 64 192 138 64 193 83 64 194 156 65 195 58 65 196 65 65 197 69 66 198 58 66 199 66 66 200 7 67 201 60 67 202 6 67 203 7 68 204 147 68 205 61 68 206 6 69 207 146 69 208 82 69 209 60 70 210 63 70 211 62 70 212 147 71 213 63 71 214 61 71 215 146 72 216 62 72 217 150 72 218 62 73 219 65 73 220 69 73 221 63 74 222 156 74 223 65 74 224 62 75 225 154 75 226 150 75 227 68 76 228 66 76 229 144 76 230 67 77 231 144 77 232 154 77 233 64 78 234 66 78 235 59 78 236 64 79 237 154 79 238 69 79 239 141 80 240 119 80 241 76 80 242 90 81 243 75 81 244 74 81 245 86 82 246 76 82 247 87 82 248 76 83 249 88 83 250 87 83 251 77 84 252 89 84 253 88 84 254 90 85 255 78 85 256 94 85 257 93 86 258 75 86 259 91 86 260 159 87 261 143 87 262 155 87 263 103 88 264 101 88 265 99 88 266 72 89 267 141 89 268 76 89 269 140 90 270 73 90 271 77 90 272 158 91 273 145 91 274 142 91 275 74 92 276 89 92 277 80 92 278 87 93 279 74 93 280 75 93 281 86 94 282 75 94 283 81 94 284 79 95 285 91 95 286 95 95 287 74 96 288 92 96 289 90 96 290 95 97 291 90 97 292 94 97 293 95 98 294 70 98 295 71 98 296 94 99 297 96 99 298 70 99 299 97 100 300 95 100 301 71 100 302 96 101 303 79 101 304 97 101 305 97 102 306 99 102 307 96 102 308 99 103 309 70 103 310 96 103 311 100 104 312 97 104 313 71 104 314 101 105 315 71 105 316 70 105 317 105 106 318 108 106 319 104 106 320 101 107 321 104 107 322 100 107 323 100 108 324 102 108 325 98 108 326 102 109 327 99 109 328 98 109 329 106 110 330 109 110 331 107 110 332 106 111 333 103 111 334 102 111 335 108 112 336 111 112 337 104 112 338 107 113 339 105 113 340 103 113 341 114 114 342 112 114 343 110 114 344 106 115 345 113 115 346 108 115 347 110 116 348 106 116 349 102 116 350 104 117 351 110 117 352 102 117 353 115 118 354 116 118 355 114 118 356 116 119 357 113 119 358 112 119 359 113 120 360 115 120 361 111 120 362 111 121 363 114 121 364 110 121 365 118 122 366 124 122 367 120 122 368 120 123 369 141 123 370 140 123 371 118 124 372 140 124 373 77 124 374 119 125 375 77 125 376 76 125 377 125 126 378 127 126 379 123 126 380 119 127 381 122 127 382 118 127 383 125 128 384 119 128 385 121 128 386 124 129 387 121 129 388 120 129 389 130 130 390 128 130 391 126 130 392 128 131 393 125 131 394 124 131 395 126 132 396 124 132 397 122 132 398 123 133 399 126 133 400 122 133 401 130 134 402 136 134 403 132 134 404 131 135 405 126 135 406 127 135 407 133 136 408 127 136 409 129 136 410 128 137 411 133 137 412 129 137 413 135 138 414 136 138 415 134 138 416 131 139 417 134 139 418 130 139 419 137 140 420 131 140 421 133 140 422 136 141 423 133 141 424 132 141 425 85 142 426 141 142 427 84 142 428 84 143 429 139 143 430 82 143 431 138 144 432 85 144 433 83 144 434 142 145 435 156 145 436 157 145 437 161 146 438 142 146 439 157 146 440 148 147 441 85 147 442 84 147 443 85 148 444 147 148 445 83 148 446 146 149 447 84 149 448 82 149 449 148 150 450 153 150 451 149 150 452 153 151 453 147 151 454 149 151 455 146 152 456 151 152 457 148 152 458 151 153 459 157 153 460 153 153 461 153 154 462 156 154 463 152 154 464 154 155 465 151 155 466 150 155 467 160 156 468 158 156 469 143 156 470 159 157 471 144 157 472 160 157 473 158 158 474 155 158 475 143 158 476 155 159 477 154 159 478 159 159 479 57 160 480 4 160 481 37 160 482 10 161 483 2 161 484 3 161 485 86 162 486 8 162 487 4 162 488 9 163 489 5 163 490 4 163 491 89 164 492 73 164 493 5 164 494 10 165 495 12 165 496 78 165 497 3 166 498 81 166 499 93 166 500 67 167 501 64 167 502 59 167 503 19 168 504 23 168 505 21 168 506 72 169 507 4 169 508 57 169 509 73 170 510 138 170 511 56 170 512 145 171 513 144 171 514 66 171 515 2 172 516 80 172 517 89 172 518 2 173 519 9 173 520 8 173 521 3 174 522 8 174 523 86 174 524 11 175 525 93 175 526 79 175 527 2 176 528 10 176 529 92 176 530 10 177 531 11 177 532 13 177 533 0 178 534 12 178 535 13 178 536 14 179 537 78 179 538 12 179 539 15 180 540 1 180 541 13 180 542 14 181 543 15 181 544 79 181 545 15 182 546 14 182 547 17 182 548 0 183 549 19 183 550 17 183 551 15 184 552 16 184 553 18 184 554 1 185 555 18 185 556 19 185 557 23 186 558 22 186 559 26 186 560 19 187 561 18 187 562 22 187 563 18 188 564 16 188 565 20 188 566 17 189 567 21 189 568 20 189 569 24 190 570 25 190 571 27 190 572 21 191 573 25 191 574 24 191 575 26 192 576 22 192 577 29 192 578 23 193 579 27 193 580 25 193 581 30 194 582 34 194 583 32 194 584 24 195 585 26 195 586 31 195 587 24 196 588 30 196 589 28 196 590 22 197 591 20 197 592 28 197 593 33 198 594 32 198 595 34 198 596 31 199 597 35 199 598 34 199 599 31 200 600 29 200 601 33 200 602 29 201 603 28 201 604 32 201 605 36 202 606 38 202 607 42 202 608 57 203 609 39 203 610 38 203 611 56 204 612 38 204 613 36 204 614 5 205 615 36 205 616 37 205 617 43 206 618 41 206 619 45 206 620 37 207 621 36 207 622 40 207 623 37 208 624 41 208 625 43 208 626 39 209 627 43 209 628 42 209 629 46 210 630 50 210 631 48 210 632 43 211 633 47 211 634 46 211 635 42 212 636 46 212 637 44 212 638 41 213 639 40 213 640 44 213 641 48 214 642 50 214 643 54 214 644 44 215 645 48 215 646 49 215 647 45 216 648 49 216 649 51 216 650 46 217 651 47 217 652 51 217 653 53 218 654 52 218 655 54 218 656 49 219 657 48 219 658 52 219 659 49 220 660 53 220 661 55 220 662 51 221 663 55 221 664 54 221 665 7 222 666 6 222 667 57 222 668 6 223 669 82 223 670 139 223 671 7 224 672 56 224 673 138 224 674 156 225 675 145 225 676 58 225 677 69 226 678 65 226 679 58 226 680 7 227 681 61 227 682 60 227 683 7 228 684 83 228 685 147 228 686 6 229 687 60 229 688 146 229 689 60 230 690 61 230 691 63 230 692 147 231 693 152 231 694 63 231 695 146 232 696 60 232 697 62 232 698 62 233 699 63 233 700 65 233 701 63 234 702 152 234 703 156 234 704 62 235 705 69 235 706 154 235 707 68 236 708 59 236 709 66 236 710 67 237 711 68 237 712 144 237 713 64 238 714 69 238 715 66 238 716 64 239 717 67 239 718 154 239 719 141 240 720 121 240 721 119 240 722 90 241 723 91 241 724 75 241 725 86 242 726 72 242 727 76 242 728 76 243 729 77 243 730 88 243 731 77 244 732 73 244 733 89 244 734 90 245 735 92 245 736 78 245 737 93 246 738 81 246 739 75 246 740 159 247 741 160 247 742 143 247 743 103 248 744 105 248 745 101 248 746 72 249 747 139 249 748 141 249 749 140 250 750 138 250 751 73 250 752 158 251 753 144 251 754 145 251 755 74 252 756 88 252 757 89 252 758 87 253 759 88 253 760 74 253 761 86 254 762 87 254 763 75 254 764 79 255 765 93 255 766 91 255 767 74 256 768 80 256 769 92 256 770 95 257 771 91 257 772 90 257 773 95 258 774 94 258 775 70 258 776 94 259 777 78 259 778 96 259 779 97 260 780 79 260 781 95 260 782 96 261 783 78 261 784 79 261 785 97 262 786 98 262 787 99 262 788 99 263 789 101 263 790 70 263 791 100 264 792 98 264 793 97 264 794 101 265 795 100 265 796 71 265 797 105 266 798 109 266 799 108 266 800 101 267 801 105 267 802 104 267 803 100 268 804 104 268 805 102 268 806 102 269 807 103 269 808 99 269 809 106 270 810 108 270 811 109 270 812 106 271 813 107 271 814 103 271 815 108 272 816 113 272 817 111 272 818 107 273 819 109 273 820 105 273 821 114 274 822 116 274 823 112 274 824 106 275 825 112 275 826 113 275 827 110 276 828 112 276 829 106 276 830 104 277 831 111 277 832 110 277 833 115 278 834 117 278 835 116 278 836 116 279 837 117 279 838 113 279 839 113 280 840 117 280 841 115 280 842 111 281 843 115 281 844 114 281 845 118 282 846 122 282 847 124 282 848 120 283 849 121 283 850 141 283 851 118 284 852 120 284 853 140 284 854 119 285 855 118 285 856 77 285 857 125 286 858 129 286 859 127 286 860 119 287 861 123 287 862 122 287 863 125 288 864 123 288 865 119 288 866 124 289 867 125 289 868 121 289 869 130 290 870 132 290 871 128 290 872 128 291 873 129 291 874 125 291 875 126 292 876 128 292 877 124 292 878 123 293 879 127 293 880 126 293 881 130 294 882 134 294 883 136 294 884 131 295 885 130 295 886 126 295 887 133 296 888 131 296 889 127 296 890 128 297 891 132 297 892 133 297 893 135 298 894 137 298 895 136 298 896 131 299 897 135 299 898 134 299 899 137 300 900 135 300 901 131 300 902 136 301 903 137 301 904 133 301 905 85 302 906 140 302 907 141 302 908 84 303 909 141 303 910 139 303 911 138 304 912 140 304 913 85 304 914 142 305 915 145 305 916 156 305 917 161 306 918 158 306 919 142 306 920 148 307 921 149 307 922 85 307 923 85 308 924 149 308 925 147 308 926 146 309 927 148 309 928 84 309 929 148 310 930 151 310 931 153 310 932 153 311 933 152 311 934 147 311 935 146 312 936 150 312 937 151 312 938 151 313 939 161 313 940 157 313 941 153 314 942 157 314 943 156 314 944 154 315 945 161 315 946 151 315 947 160 316 948 144 316 949 158 316 950 159 317 951 154 317 952 144 317 953 158 318 954 161 318 955 155 318 956 155 319 957 161 319 958 154 319 959</p>
+          <p>57 0 37 0 39 0 10 1 3 1 11 1 86 2 4 2 72 2 9 3 4 3 8 3 89 4 5 4 9 4 10 5 78 5 92 5 3 6 93 6 11 6 67 7 59 7 68 7 19 8 21 8 17 8 72 9 57 9 139 9 73 10 56 10 5 10 145 11 66 11 58 11 2 12 89 12 9 12 2 13 8 13 3 13 3 14 86 14 81 14 11 15 79 15 13 15 2 16 92 16 80 16 10 17 13 17 12 17 0 18 13 18 1 18 14 19 12 19 0 19 15 20 13 20 79 20 14 21 79 21 78 21 15 22 17 22 16 22 0 23 17 23 14 23 15 24 18 24 1 24 1 25 19 25 0 25 23 26 26 26 27 26 19 27 22 27 23 27 18 28 20 28 22 28 17 29 20 29 16 29 24 30 27 30 26 30 21 31 24 31 20 31 26 32 29 32 31 32 23 33 25 33 21 33 30 34 32 34 28 34 24 35 31 35 30 35 24 36 28 36 20 36 22 37 28 37 29 37 33 38 34 38 35 38 31 39 34 39 30 39 31 40 33 40 35 40 29 41 32 41 33 41 36 42 42 42 40 42 57 43 38 43 56 43 56 44 36 44 5 44 5 45 37 45 4 45 43 46 45 46 47 46 37 47 40 47 41 47 37 48 43 48 39 48 39 49 42 49 38 49 46 50 48 50 44 50 43 51 46 51 42 51 42 52 44 52 40 52 41 53 44 53 45 53 48 54 54 54 52 54 44 55 49 55 45 55 45 56 51 56 47 56 46 57 51 57 50 57 53 58 54 58 55 58 49 59 52 59 53 59 49 60 55 60 51 60 51 61 54 61 50 61 7 62 57 62 56 62 6 63 139 63 57 63 7 64 138 64 83 64 156 65 58 65 65 65 69 66 58 66 66 66 7 67 60 67 6 67 7 68 147 68 61 68 6 69 146 69 82 69 60 70 63 70 62 70 147 71 63 71 61 71 146 72 62 72 150 72 62 73 65 73 69 73 63 74 156 74 65 74 62 75 154 75 150 75 68 76 66 76 144 76 67 77 144 77 154 77 64 78 66 78 59 78 64 79 154 79 69 79 141 80 119 80 76 80 90 81 75 81 74 81 86 82 76 82 87 82 76 83 88 83 87 83 77 84 89 84 88 84 90 85 78 85 94 85 93 86 75 86 91 86 159 87 143 87 155 87 103 88 101 88 99 88 72 89 141 89 76 89 140 90 73 90 77 90 158 91 145 91 142 91 74 92 89 92 80 92 87 93 74 93 75 93 86 94 75 94 81 94 79 95 91 95 95 95 74 96 92 96 90 96 95 97 90 97 94 97 95 98 70 98 71 98 94 99 96 99 70 99 97 100 95 100 71 100 96 101 79 101 97 101 97 102 99 102 96 102 99 103 70 103 96 103 100 104 97 104 71 104 101 105 71 105 70 105 105 106 108 106 104 106 101 107 104 107 100 107 100 108 102 108 98 108 102 109 99 109 98 109 106 110 109 110 107 110 106 111 103 111 102 111 108 112 111 112 104 112 107 113 105 113 103 113 114 114 112 114 110 114 106 115 113 115 108 115 110 116 106 116 102 116 104 117 110 117 102 117 115 118 116 118 114 118 116 119 113 119 112 119 113 120 115 120 111 120 111 121 114 121 110 121 118 122 124 122 120 122 120 123 141 123 140 123 118 124 140 124 77 124 119 125 77 125 76 125 125 126 127 126 123 126 119 127 122 127 118 127 125 128 119 128 121 128 124 129 121 129 120 129 130 130 128 130 126 130 128 131 125 131 124 131 126 132 124 132 122 132 123 133 126 133 122 133 130 134 136 134 132 134 131 135 126 135 127 135 133 136 127 136 129 136 128 137 133 137 129 137 135 138 136 138 134 138 131 139 134 139 130 139 137 140 131 140 133 140 136 141 133 141 132 141 85 142 141 142 84 142 84 143 139 143 82 143 138 144 85 144 83 144 142 145 156 145 157 145 161 146 142 146 157 146 148 147 85 147 84 147 85 148 147 148 83 148 146 149 84 149 82 149 148 150 153 150 149 150 153 151 147 151 149 151 146 152 151 152 148 152 151 153 157 153 153 153 153 154 156 154 152 154 154 155 151 155 150 155 160 156 158 156 143 156 159 157 144 157 160 157 158 158 155 158 143 158 155 159 154 159 159 159 57 160 4 160 37 160 10 161 2 161 3 161 86 162 8 162 4 162 9 163 5 163 4 163 89 164 73 164 5 164 10 165 12 165 78 165 3 166 81 166 93 166 67 167 64 167 59 167 19 168 23 168 21 168 72 169 4 169 57 169 73 170 138 170 56 170 145 171 144 171 66 171 2 172 80 172 89 172 2 173 9 173 8 173 3 174 8 174 86 174 11 175 93 175 79 175 2 176 10 176 92 176 10 177 11 177 13 177 0 178 12 178 13 178 14 179 78 179 12 179 15 180 1 180 13 180 14 181 15 181 79 181 15 182 14 182 17 182 0 183 19 183 17 183 15 184 16 184 18 184 1 185 18 185 19 185 23 186 22 186 26 186 19 187 18 187 22 187 18 188 16 188 20 188 17 189 21 189 20 189 24 190 25 190 27 190 21 191 25 191 24 191 26 192 22 192 29 192 23 193 27 193 25 193 30 194 34 194 32 194 24 195 26 195 31 195 24 196 30 196 28 196 22 197 20 197 28 197 33 198 32 198 34 198 31 199 35 199 34 199 31 200 29 200 33 200 29 201 28 201 32 201 36 202 38 202 42 202 57 203 39 203 38 203 56 204 38 204 36 204 5 205 36 205 37 205 43 206 41 206 45 206 37 207 36 207 40 207 37 208 41 208 43 208 39 209 43 209 42 209 46 210 50 210 48 210 43 211 47 211 46 211 42 212 46 212 44 212 41 213 40 213 44 213 48 214 50 214 54 214 44 215 48 215 49 215 45 216 49 216 51 216 46 217 47 217 51 217 53 218 52 218 54 218 49 219 48 219 52 219 49 220 53 220 55 220 51 221 55 221 54 221 7 222 6 222 57 222 6 223 82 223 139 223 7 224 56 224 138 224 156 225 145 225 58 225 69 226 65 226 58 226 7 227 61 227 60 227 7 228 83 228 147 228 6 229 60 229 146 229 60 230 61 230 63 230 147 231 152 231 63 231 146 232 60 232 62 232 62 233 63 233 65 233 63 234 152 234 156 234 62 235 69 235 154 235 68 236 59 236 66 236 67 237 68 237 144 237 64 238 69 238 66 238 64 239 67 239 154 239 141 240 121 240 119 240 90 241 91 241 75 241 86 242 72 242 76 242 76 243 77 243 88 243 77 244 73 244 89 244 90 245 92 245 78 245 93 246 81 246 75 246 159 247 160 247 143 247 103 248 105 248 101 248 72 249 139 249 141 249 140 250 138 250 73 250 158 251 144 251 145 251 74 252 88 252 89 252 87 253 88 253 74 253 86 254 87 254 75 254 79 255 93 255 91 255 74 256 80 256 92 256 95 257 91 257 90 257 95 258 94 258 70 258 94 259 78 259 96 259 97 260 79 260 95 260 96 261 78 261 79 261 97 262 98 262 99 262 99 263 101 263 70 263 100 264 98 264 97 264 101 265 100 265 71 265 105 266 109 266 108 266 101 267 105 267 104 267 100 268 104 268 102 268 102 269 103 269 99 269 106 270 108 270 109 270 106 271 107 271 103 271 108 272 113 272 111 272 107 273 109 273 105 273 114 274 116 274 112 274 106 275 112 275 113 275 110 276 112 276 106 276 104 277 111 277 110 277 115 278 117 278 116 278 116 279 117 279 113 279 113 280 117 280 115 280 111 281 115 281 114 281 118 282 122 282 124 282 120 283 121 283 141 283 118 284 120 284 140 284 119 285 118 285 77 285 125 286 129 286 127 286 119 287 123 287 122 287 125 288 123 288 119 288 124 289 125 289 121 289 130 290 132 290 128 290 128 291 129 291 125 291 126 292 128 292 124 292 123 293 127 293 126 293 130 294 134 294 136 294 131 295 130 295 126 295 133 296 131 296 127 296 128 297 132 297 133 297 135 298 137 298 136 298 131 299 135 299 134 299 137 300 135 300 131 300 136 301 137 301 133 301 85 302 140 302 141 302 84 303 141 303 139 303 138 304 140 304 85 304 142 305 145 305 156 305 161 306 158 306 142 306 148 307 149 307 85 307 85 308 149 308 147 308 146 309 148 309 84 309 148 310 151 310 153 310 153 311 152 311 147 311 146 312 150 312 151 312 151 313 161 313 157 313 153 314 157 314 156 314 154 315 161 315 151 315 160 316 144 316 158 316 159 317 154 317 144 317 158 318 161 318 155 318 155 319 161 319 154 319</p>
         </triangles>
       </mesh>
     </geometry>
@@ -182,7 +172,7 @@
   <library_animations>
     <animation id="Armature_torso_pose_matrix">
       <source id="Armature_torso_pose_matrix-input">
-        <float_array id="Armature_torso_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_torso_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_torso_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -190,7 +180,7 @@
         </technique_common>
       </source>
       <source id="Armature_torso_pose_matrix-output">
-        <float_array id="Armature_torso_pose_matrix-output-array" count="80">1 0 0 0 0 0 -1 0 0 1 0 4.395633 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 4.395633 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 5.338784 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 4.108954 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 4.395633 0 0 0 1</float_array>
+        <float_array id="Armature_torso_pose_matrix-output-array" count="80">1 0 0 0 0 0 -1 0 0 1 0 4.395633 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 4.395633 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 4.1236 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 4.108954 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 4.395633 0 0 0 1</float_array>
         <technique_common>
           <accessor source="#Armature_torso_pose_matrix-output-array" count="5" stride="16">
             <param name="TRANSFORM" type="float4x4"/>
@@ -214,7 +204,7 @@
     </animation>
     <animation id="Armature_chest_pose_matrix">
       <source id="Armature_chest_pose_matrix-input">
-        <float_array id="Armature_chest_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_chest_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_chest_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -246,7 +236,7 @@
     </animation>
     <animation id="Armature_head_pose_matrix">
       <source id="Armature_head_pose_matrix-input">
-        <float_array id="Armature_head_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_head_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_head_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -278,7 +268,7 @@
     </animation>
     <animation id="Armature_upper_arm_L_pose_matrix">
       <source id="Armature_upper_arm_L_pose_matrix-input">
-        <float_array id="Armature_upper_arm_L_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_upper_arm_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_upper_arm_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -310,7 +300,7 @@
     </animation>
     <animation id="Armature_forearm_L_pose_matrix">
       <source id="Armature_forearm_L_pose_matrix-input">
-        <float_array id="Armature_forearm_L_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_forearm_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_forearm_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -342,7 +332,7 @@
     </animation>
     <animation id="Armature_hand_L_pose_matrix">
       <source id="Armature_hand_L_pose_matrix-input">
-        <float_array id="Armature_hand_L_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_hand_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_hand_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -374,7 +364,7 @@
     </animation>
     <animation id="Armature_thigh_L_pose_matrix">
       <source id="Armature_thigh_L_pose_matrix-input">
-        <float_array id="Armature_thigh_L_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_thigh_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_thigh_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -406,7 +396,7 @@
     </animation>
     <animation id="Armature_Lower_leg_L_pose_matrix">
       <source id="Armature_Lower_leg_L_pose_matrix-input">
-        <float_array id="Armature_Lower_leg_L_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_Lower_leg_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_Lower_leg_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -438,7 +428,7 @@
     </animation>
     <animation id="Armature_Foot_L_pose_matrix">
       <source id="Armature_Foot_L_pose_matrix-input">
-        <float_array id="Armature_Foot_L_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_Foot_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_Foot_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -470,7 +460,7 @@
     </animation>
     <animation id="Armature_upper_arm_R_pose_matrix">
       <source id="Armature_upper_arm_R_pose_matrix-input">
-        <float_array id="Armature_upper_arm_R_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_upper_arm_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_upper_arm_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -502,7 +492,7 @@
     </animation>
     <animation id="Armature_forearm_R_pose_matrix">
       <source id="Armature_forearm_R_pose_matrix-input">
-        <float_array id="Armature_forearm_R_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_forearm_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_forearm_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -534,7 +524,7 @@
     </animation>
     <animation id="Armature_hand_R_pose_matrix">
       <source id="Armature_hand_R_pose_matrix-input">
-        <float_array id="Armature_hand_R_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_hand_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_hand_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -566,7 +556,7 @@
     </animation>
     <animation id="Armature_thigh_R_pose_matrix">
       <source id="Armature_thigh_R_pose_matrix-input">
-        <float_array id="Armature_thigh_R_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_thigh_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_thigh_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -598,7 +588,7 @@
     </animation>
     <animation id="Armature_lower_leg_R_pose_matrix">
       <source id="Armature_lower_leg_R_pose_matrix-input">
-        <float_array id="Armature_lower_leg_R_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_lower_leg_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_lower_leg_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -630,7 +620,7 @@
     </animation>
     <animation id="Armature_Foot_R_pose_matrix">
       <source id="Armature_Foot_R_pose_matrix-input">
-        <float_array id="Armature_Foot_R_pose_matrix-input-array" count="5">0 0.875 1.833333 2.5 3.541667</float_array>
+        <float_array id="Armature_Foot_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
         <technique_common>
           <accessor source="#Armature_Foot_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -682,9 +672,9 @@
           </technique_common>
         </source>
         <source id="Armature_Cube-skin-weights">
-          <float_array id="Armature_Cube-skin-weights-array" count="360">0.119554 0.8242733 0.0561726 0.07848334 0.8690127 0.05250388 0.8808535 0.09672421 0.02242231 0.8460656 0.044658 0.05882692 0.05044931 0.1838456 0.3652662 0.4508882 0.2005192 0.03858608 0.7608948 0.5189166 0.3155093 0.1655741 0.6054432 0.217447 0.1771098 0.7425727 0.118373 0.1390543 0.7161883 0.02386349 0.2599481 0.87678 0.007382273 0.1158377 0.8571169 0.1428831 0.2275302 0.7106439 0.06182593 0.1236335 0.8763665 0.09814846 0.6774182 0.2244333 0.04330867 0.6926152 0.2640762 0.9682042 0.03179579 1 0.9710561 0.02894389 1 4.63499e-4 0.9478935 0.05164301 0.9998043 1.95772e-4 0.9452758 0.05472415 1 0.07368558 0.9263144 0.4967304 0.5032696 0.09618592 0.9038141 0.4955589 0.5044411 0.05998528 0.9400147 0.06660628 0.9333937 1 1 1 1 1 1 0.1502726 0.07427108 0.7754564 0.1425565 0.2397081 0.6126558 0.005079507 0.02920037 0.9707996 0.03772926 0.9052384 0.0570324 0.9950532 0.004946768 0.8837131 0.1162869 0.9360896 0.06391036 0.1836892 0.8163107 1 1 1 1 0.07939279 0.9206072 0.01688671 0.9831132 0.06147724 0.9385228 0.05225497 0.947745 1 1 1 1 0.1660805 0.05388253 0.7800369 0.1646768 0.07297968 0.7623435 0.01935172 0.9806482 0.01490825 0.9850918 0.3435877 0.5485873 0.1078249 0.5487714 0.3209391 0.1302895 0.2802804 0.6367526 0.0829671 0.5113961 0.3834169 0.105187 0.02471798 0.975282 0.1582647 0.8280396 0.01369559 1 0.0179336 0.9820663 0.01053893 0.9894611 0.08456033 0.9154396 0.119554 0.0561726 0.8242733 0.07848334 0.05250388 0.8690127 0.07972913 0.8465427 0.03686404 0.03686404 0.1367119 0.5759288 0.03090989 0.1282246 0.1282246 0.8808535 0.09672427 0.02242231 0.8460657 0.044658 0.05882692 0.05044937 0.1838456 0.3652662 0.4508882 0.2005192 0.03858613 0.7608947 0.1768468 0.4115766 0.4115766 0.05947077 0.4702646 0.4702646 1 1 0.6703441 0.3296558 0.5855171 0.3366163 0.03893327 0.03893327 0.5189166 0.3155093 0.1655741 0.6054433 0.217447 0.1771098 0.915801 0.08419907 0.7425727 0.1183729 0.1390543 0.7161883 0.02386349 0.2599481 0.8379617 0.06719529 0.04742151 0.04742151 0.87678 0.007382273 0.1158377 0.8571169 0.1428831 0.9515051 0.0242474 0.0242474 0.9289227 0.03553861 0.03553861 0.2275302 0.06182593 0.7106438 0.1236336 0.8763664 0.09814846 0.2244333 0.6774181 0.04330867 0.2640762 0.6926152 0.9682042 0.03179579 1 0.9710561 0.02894389 1 4.63495e-4 0.9478935 0.05164301 0.9998043 1.95772e-4 0.9452758 0.05472415 1 0.07368558 0.9263144 0.4967304 0.5032696 0.09618592 0.9038141 0.4955589 0.5044411 0.05998528 0.9400147 0.06660628 0.9333937 1 1 1 1 1 1 0.1502726 0.07427108 0.7754564 0.1425565 0.2397081 0.6126558 0.005079507 0.02920037 0.9707996 0.03772926 0.9052384 0.0570324 0.9950532 0.004946768 0.8837131 0.1162869 0.9360896 0.06391042 0.1836892 0.8163107 1 1 1 1 0.07939279 0.9206072 0.01688671 0.9831132 0.06147724 0.9385228 0.05225497 0.947745 1 1 1 1 0.04564887 0.536947 0.1736339 0.1218851 0.1218851 0.8120062 0.1541004 0.01694667 0.01694667 0.1660805 0.05388253 0.7800369 0.1646768 0.07297968 0.7623435 0.01935172 0.9806482 0.01490825 0.9850918 1 1 0.3374757 0.6625244 0.3726655 0.5905241 0.01840513 0.01840519 0.3435877 0.5485873 0.1078249 0.5487714 0.3209391 0.1302895 0.1947965 0.8052035 0.2802804 0.6367526 0.0829671 0.2787712 0.7167192 0.002254724 0.002254724 0.5113961 0.383417 0.105187 0.05474197 0.945258 0.02471798 0.975282 0.0596199 0.9403801 0.1582647 0.8280396 0.01369559 1 0.0179336 0.9820663 0.01053893 0.9894611 0.08456033 0.9154396</float_array>
+          <float_array id="Armature_Cube-skin-weights-array" count="358">0.119554 0.8242733 0.0561726 0.07848334 0.8690127 0.05250388 0.8808535 0.09672421 0.02242231 0.8460656 0.044658 0.05882692 0.05044931 0.1838456 0.3652662 0.4508882 0.2005192 0.03858608 0.7608948 0.5189166 0.3155093 0.1655741 0.6054432 0.217447 0.1771098 0.7425727 0.118373 0.1390543 0.7161883 0.02386349 0.2599481 0.87678 0.007382273 0.1158377 0.8571169 0.1428831 0.2275302 0.7106439 0.06182593 0.1236335 0.8763665 0.09814846 0.6774182 0.2244333 0.04330867 0.6926152 0.2640762 0.9682042 0.03179579 1 0.9710561 0.02894389 1 4.63499e-4 0.9478935 0.05164301 0.9998043 1.95772e-4 0.9452758 0.05472415 1 0.07368558 0.9263144 0.4967304 0.5032696 0.09618592 0.9038141 0.4955589 0.5044411 0.05998528 0.9400147 0.06660628 0.9333937 1 1 1 1 1 1 0.1502726 0.07427108 0.7754564 0.1425565 0.2397081 0.6126558 0.005079507 0.02920037 0.9707996 0.03772926 0.9052384 0.0570324 0.9950532 0.004946768 0.8837131 0.1162869 0.9360896 0.06391036 0.1836892 0.8163107 1 1 1 1 0.07939279 0.9206072 0.01688671 0.9831132 0.06147724 0.9385228 0.05225497 0.947745 1 1 1 1 0.1660805 0.05388253 0.7800369 0.1646768 0.07297968 0.7623435 0.01935172 0.9806482 0.01490825 0.9850918 0.3435877 0.5485873 0.1078249 0.5487714 0.3209391 0.1302895 0.2802804 0.6367526 0.0829671 0.5113961 0.3834169 0.105187 0.02471798 0.975282 0.1582647 0.8280396 0.01369559 1 0.0179336 0.9820663 0.01053893 0.9894611 0.08456033 0.9154396 0.119554 0.0561726 0.8242733 0.07848334 0.05250388 0.8690127 0.07972913 0.8465427 0.03686404 0.03686404 0.1410725 0.5942986 0.1323145 0.1323145 0.8808535 0.09672427 0.02242231 0.8460657 0.044658 0.05882692 0.05044937 0.1838456 0.3652662 0.4508882 0.2005192 0.03858613 0.7608947 0.1768468 0.4115766 0.4115766 0.05947077 0.4702646 0.4702646 1 1 0.6703441 0.3296558 0.5855171 0.3366163 0.03893327 0.03893327 0.5189166 0.3155093 0.1655741 0.6054433 0.217447 0.1771098 0.915801 0.08419907 0.7425727 0.1183729 0.1390543 0.7161883 0.02386349 0.2599481 0.8379617 0.06719529 0.04742151 0.04742151 0.87678 0.007382273 0.1158377 0.8571169 0.1428831 0.9515051 0.0242474 0.0242474 0.9289227 0.03553861 0.03553861 0.2275302 0.06182593 0.7106438 0.1236336 0.8763664 0.09814846 0.2244333 0.6774181 0.04330867 0.2640762 0.6926152 0.9682042 0.03179579 1 0.9710561 0.02894389 1 4.63495e-4 0.9478935 0.05164301 0.9998043 1.95772e-4 0.9452758 0.05472415 1 0.07368558 0.9263144 0.4967304 0.5032696 0.09618592 0.9038141 0.4955589 0.5044411 0.05998528 0.9400147 0.06660628 0.9333937 1 1 1 1 1 1 0.1502726 0.07427108 0.7754564 0.1425565 0.2397081 0.6126558 0.005079507 0.02920037 0.9707996 0.03772926 0.9052384 0.0570324 0.9950532 0.004946768 0.8837131 0.1162869 0.9360896 0.06391042 0.1836892 0.8163107 1 1 1 1 0.07939279 0.9206072 0.01688671 0.9831132 0.06147724 0.9385228 0.05225497 0.947745 1 1 1 1 0.5626305 0.1819393 0.1277151 0.1277151 0.8120062 0.1541004 0.01694667 0.01694667 0.1660805 0.05388253 0.7800369 0.1646768 0.07297968 0.7623435 0.01935172 0.9806482 0.01490825 0.9850918 1 1 0.3374757 0.6625244 0.3726655 0.5905241 0.01840513 0.01840519 0.3435877 0.5485873 0.1078249 0.5487714 0.3209391 0.1302895 0.1947965 0.8052035 0.2802804 0.6367526 0.0829671 0.2787712 0.7167192 0.002254724 0.002254724 0.5113961 0.383417 0.105187 0.05474197 0.945258 0.02471798 0.975282 0.0596199 0.9403801 0.1582647 0.8280396 0.01369559 1 0.0179336 0.9820663 0.01053893 0.9894611 0.08456033 0.9154396</float_array>
           <technique_common>
-            <accessor source="#Armature_Cube-skin-weights-array" count="360" stride="1">
+            <accessor source="#Armature_Cube-skin-weights-array" count="358" stride="1">
               <param name="WEIGHT" type="float"/>
             </accessor>
           </technique_common>
@@ -696,8 +686,8 @@
         <vertex_weights count="162">
           <input semantic="JOINT" source="#Armature_Cube-skin-joints" offset="0"/>
           <input semantic="WEIGHT" source="#Armature_Cube-skin-weights" offset="1"/>
-          <vcount>3 3 3 4 3 3 3 3 3 3 3 2 3 2 3 3 2 1 2 1 3 2 2 1 2 2 2 2 2 2 1 1 1 1 1 1 3 4 2 3 2 2 2 2 1 1 1 1 2 2 2 2 1 1 1 1 3 3 2 2 3 3 3 3 2 3 1 2 2 2 3 3 4 5 3 4 3 3 3 3 1 1 2 4 3 3 2 3 3 4 3 2 3 3 3 2 3 3 2 1 2 1 3 2 2 1 2 2 2 2 2 2 1 1 1 1 1 1 3 4 2 3 2 2 2 2 1 1 1 1 2 2 2 2 1 1 1 1 5 4 3 3 2 2 1 1 2 4 3 3 2 3 4 3 2 2 2 3 1 2 2 2 </vcount>
-          <v>0 0 6 1 12 2 0 3 6 4 12 5 0 6 3 7 6 8 0 9 1 10 3 11 6 12 0 13 1 14 3 15 0 16 1 17 3 18 1 19 2 20 3 21 1 22 2 23 3 24 0 25 1 26 3 27 0 28 1 29 3 30 0 31 3 32 6 33 0 34 6 35 0 36 6 37 12 38 0 39 6 40 0 41 6 42 12 43 0 44 6 45 12 46 6 47 7 48 6 49 6 50 7 51 6 52 6 53 7 54 8 55 7 56 8 57 7 58 8 59 7 60 7 61 8 62 7 63 8 64 7 65 8 66 7 67 8 68 7 69 8 70 7 71 8 72 8 73 8 74 8 75 8 76 8 77 8 78 0 79 1 80 3 81 0 82 1 83 3 84 4 85 1 86 3 87 1 88 3 89 4 90 3 91 4 92 3 93 4 94 3 95 4 96 3 97 4 98 4 99 4 100 4 101 4 102 4 103 5 104 4 105 5 106 4 107 5 108 4 109 5 110 5 111 5 112 5 113 5 114 1 115 2 116 3 117 1 118 2 119 3 120 1 121 2 122 1 123 2 124 1 125 2 126 3 127 1 128 2 129 3 130 1 131 2 132 3 133 1 134 2 135 3 136 1 137 2 138 1 139 2 140 3 141 2 142 1 143 2 144 1 145 2 146 1 147 2 148 0 149 6 150 12 151 0 152 6 153 12 154 0 155 1 156 3 157 9 158 0 159 1 160 2 161 3 162 9 163 0 164 9 165 12 166 0 167 1 168 9 169 12 170 0 171 1 172 9 173 0 174 1 175 9 176 0 177 6 178 12 179 0 180 6 181 12 182 0 183 0 184 1 185 2 186 1 187 2 188 3 189 9 190 1 191 2 192 9 193 1 194 2 195 9 196 0 197 1 198 0 199 1 200 9 201 0 202 1 203 9 204 0 205 1 206 3 207 9 208 0 209 9 210 12 211 0 212 12 213 0 214 6 215 12 216 0 217 6 218 12 219 0 220 6 221 12 222 0 223 12 224 0 225 6 226 12 227 0 228 6 229 12 230 12 231 13 232 12 233 12 234 13 235 12 236 12 237 13 238 14 239 13 240 14 241 13 242 14 243 13 244 13 245 14 246 13 247 14 248 13 249 14 250 13 251 14 252 13 253 14 254 13 255 14 256 14 257 14 258 14 259 14 260 14 261 14 262 0 263 1 264 9 265 0 266 1 267 9 268 10 269 1 270 9 271 1 272 9 273 10 274 9 275 10 276 9 277 10 278 9 279 10 280 9 281 10 282 10 283 10 284 10 285 10 286 10 287 11 288 10 289 11 290 10 291 11 292 10 293 11 294 11 295 11 296 11 297 11 298 0 299 1 300 2 301 3 302 9 303 1 304 2 305 3 306 9 307 1 308 2 309 9 310 1 311 2 312 9 313 1 314 2 315 1 316 2 317 2 318 2 319 1 320 2 321 1 322 2 323 3 324 9 325 1 326 2 327 9 328 1 329 2 330 9 331 1 332 2 333 1 334 2 335 9 336 1 337 2 338 3 339 9 340 1 341 2 342 9 343 1 344 2 345 1 346 2 347 1 348 2 349 1 350 2 351 9 352 2 353 1 354 2 355 1 356 2 357 1 358 2 359</v>
+          <vcount>3 3 3 4 3 3 3 3 3 3 3 2 3 2 3 3 2 1 2 1 3 2 2 1 2 2 2 2 2 2 1 1 1 1 1 1 3 4 2 3 2 2 2 2 1 1 1 1 2 2 2 2 1 1 1 1 3 3 2 2 3 3 3 3 2 3 1 2 2 2 3 3 4 4 3 4 3 3 3 3 1 1 2 4 3 3 2 3 3 4 3 2 3 3 3 2 3 3 2 1 2 1 3 2 2 1 2 2 2 2 2 2 1 1 1 1 1 1 3 4 2 3 2 2 2 2 1 1 1 1 2 2 2 2 1 1 1 1 4 4 3 3 2 2 1 1 2 4 3 3 2 3 4 3 2 2 2 3 1 2 2 2 </vcount>
+          <v>0 0 6 1 12 2 0 3 6 4 12 5 0 6 3 7 6 8 0 9 1 10 3 11 6 12 0 13 1 14 3 15 0 16 1 17 3 18 1 19 2 20 3 21 1 22 2 23 3 24 0 25 1 26 3 27 0 28 1 29 3 30 0 31 3 32 6 33 0 34 6 35 0 36 6 37 12 38 0 39 6 40 0 41 6 42 12 43 0 44 6 45 12 46 6 47 7 48 6 49 6 50 7 51 6 52 6 53 7 54 8 55 7 56 8 57 7 58 8 59 7 60 7 61 8 62 7 63 8 64 7 65 8 66 7 67 8 68 7 69 8 70 7 71 8 72 8 73 8 74 8 75 8 76 8 77 8 78 0 79 1 80 3 81 0 82 1 83 3 84 4 85 1 86 3 87 1 88 3 89 4 90 3 91 4 92 3 93 4 94 3 95 4 96 3 97 4 98 4 99 4 100 4 101 4 102 4 103 5 104 4 105 5 106 4 107 5 108 4 109 5 110 5 111 5 112 5 113 5 114 1 115 2 116 3 117 1 118 2 119 3 120 1 121 2 122 1 123 2 124 1 125 2 126 3 127 1 128 2 129 3 130 1 131 2 132 3 133 1 134 2 135 3 136 1 137 2 138 1 139 2 140 3 141 2 142 1 143 2 144 1 145 2 146 1 147 2 148 0 149 6 150 12 151 0 152 6 153 12 154 0 155 1 156 3 157 9 158 0 159 1 160 3 161 9 162 0 163 9 164 12 165 0 166 1 167 9 168 12 169 0 170 1 171 9 172 0 173 1 174 9 175 0 176 6 177 12 178 0 179 6 180 12 181 0 182 0 183 1 184 2 185 1 186 2 187 3 188 9 189 1 190 2 191 9 192 1 193 2 194 9 195 0 196 1 197 0 198 1 199 9 200 0 201 1 202 9 203 0 204 1 205 3 206 9 207 0 208 9 209 12 210 0 211 12 212 0 213 6 214 12 215 0 216 6 217 12 218 0 219 6 220 12 221 0 222 12 223 0 224 6 225 12 226 0 227 6 228 12 229 12 230 13 231 12 232 12 233 13 234 12 235 12 236 13 237 14 238 13 239 14 240 13 241 14 242 13 243 13 244 14 245 13 246 14 247 13 248 14 249 13 250 14 251 13 252 14 253 13 254 14 255 14 256 14 257 14 258 14 259 14 260 14 261 0 262 1 263 9 264 0 265 1 266 9 267 10 268 1 269 9 270 1 271 9 272 10 273 9 274 10 275 9 276 10 277 9 278 10 279 9 280 10 281 10 282 10 283 10 284 10 285 10 286 11 287 10 288 11 289 10 290 11 291 10 292 11 293 11 294 11 295 11 296 11 297 1 298 2 299 3 300 9 301 1 302 2 303 3 304 9 305 1 306 2 307 9 308 1 309 2 310 9 311 1 312 2 313 1 314 2 315 2 316 2 317 1 318 2 319 1 320 2 321 3 322 9 323 1 324 2 325 9 326 1 327 2 328 9 329 1 330 2 331 1 332 2 333 9 334 1 335 2 336 3 337 9 338 1 339 2 340 9 341 1 342 2 343 1 344 2 345 1 346 2 347 1 348 2 349 9 350 2 351 1 352 2 353 1 354 2 355 1 356 2 357</v>
         </vertex_weights>
       </skin>
     </controller>
@@ -722,18 +712,18 @@
               <matrix sid="transform">1 0 0 0 0 1 0 1.37479 0 0 1 0 0 0 0 1</matrix>
               <extra>
                 <technique profile="blender">
-                  <connect>1</connect>
-                  <layer>0</layer>
-                  <tip_x>0</tip_x>
-                  <tip_y>0</tip_y>
-                  <tip_z>0.7892413</tip_z>
+                  <connect sid="connect" type="bool">1</connect>
+                  <layer sid="layer" type="string">0</layer>
+                  <tip_x sid="tip_x" type="float">0</tip_x>
+                  <tip_y sid="tip_y" type="float">0</tip_y>
+                  <tip_z sid="tip_z" type="float">0.7892413</tip_z>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
-                <connect>1</connect>
-                <layer>0</layer>
+                <connect sid="connect" type="bool">1</connect>
+                <layer sid="layer" type="string">0</layer>
               </technique>
             </extra>
           </node>
@@ -745,27 +735,27 @@
                 <matrix sid="transform">0.9864943 -0.009203173 -0.1635372 0 0.05515577 0.9587768 0.2787564 1.836363 0.1542302 -0.2840117 0.9463354 -2.38419e-7 0 0 0 1</matrix>
                 <extra>
                   <technique profile="blender">
-                    <connect>1</connect>
-                    <layer>0</layer>
-                    <roll>0.4099608</roll>
-                    <tip_x>0.4724364</tip_x>
-                    <tip_y>-0.1029668</tip_y>
-                    <tip_z>-0.2604457</tip_z>
+                    <connect sid="connect" type="bool">1</connect>
+                    <layer sid="layer" type="string">0</layer>
+                    <roll sid="roll" type="float">0.4099608</roll>
+                    <tip_x sid="tip_x" type="float">0.4724364</tip_x>
+                    <tip_y sid="tip_y" type="float">-0.1029668</tip_y>
+                    <tip_z sid="tip_z" type="float">-0.2604457</tip_z>
                   </technique>
                 </extra>
               </node>
               <extra>
                 <technique profile="blender">
-                  <connect>1</connect>
-                  <layer>0</layer>
-                  <roll>0.221312</roll>
+                  <connect sid="connect" type="bool">1</connect>
+                  <layer sid="layer" type="string">0</layer>
+                  <roll sid="roll" type="float">0.221312</roll>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
-                <layer>0</layer>
-                <roll>2.137331</roll>
+                <layer sid="layer" type="string">0</layer>
+                <roll sid="roll" type="float">2.137331</roll>
               </technique>
             </extra>
           </node>
@@ -777,27 +767,27 @@
                 <matrix sid="transform">-0.0214541 0.9909527 0.1324839 5.96046e-8 -0.1412898 0.1281792 -0.9816349 2.222306 -0.9897355 -0.0397788 0.1372616 -5.96046e-8 0 0 0 1</matrix>
                 <extra>
                   <technique profile="blender">
-                    <connect>1</connect>
-                    <layer>0</layer>
-                    <roll>-3.141593</roll>
-                    <tip_x>0</tip_x>
-                    <tip_y>-1.059953</tip_y>
-                    <tip_z>-0.2846732</tip_z>
+                    <connect sid="connect" type="bool">1</connect>
+                    <layer sid="layer" type="string">0</layer>
+                    <roll sid="roll" type="float">-3.141593</roll>
+                    <tip_x sid="tip_x" type="float">0</tip_x>
+                    <tip_y sid="tip_y" type="float">-1.059953</tip_y>
+                    <tip_z sid="tip_z" type="float">-0.2846732</tip_z>
                   </technique>
                 </extra>
               </node>
               <extra>
                 <technique profile="blender">
-                  <connect>1</connect>
-                  <layer>0</layer>
-                  <roll>1.424956</roll>
+                  <connect sid="connect" type="bool">1</connect>
+                  <layer sid="layer" type="string">0</layer>
+                  <roll sid="roll" type="float">1.424956</roll>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
-                <layer>0</layer>
-                <roll>2.983235</roll>
+                <layer sid="layer" type="string">0</layer>
+                <roll sid="roll" type="float">2.983235</roll>
               </technique>
             </extra>
           </node>
@@ -809,27 +799,27 @@
                 <matrix sid="transform">0.5692483 -0.2840611 -0.7715348 2.38419e-7 0.1749492 0.9587768 -0.2239197 1.836362 0.8033364 -0.007513541 0.5954782 0 0 0 0 1</matrix>
                 <extra>
                   <technique profile="blender">
-                    <connect>1</connect>
-                    <layer>0</layer>
-                    <roll>3.199527</roll>
-                    <tip_x>-0.4724364</tip_x>
-                    <tip_y>-0.1029668</tip_y>
-                    <tip_z>-0.2604457</tip_z>
+                    <connect sid="connect" type="bool">1</connect>
+                    <layer sid="layer" type="string">0</layer>
+                    <roll sid="roll" type="float">3.199527</roll>
+                    <tip_x sid="tip_x" type="float">-0.4724364</tip_x>
+                    <tip_y sid="tip_y" type="float">-0.1029668</tip_y>
+                    <tip_z sid="tip_z" type="float">-0.2604457</tip_z>
                   </technique>
                 </extra>
               </node>
               <extra>
                 <technique profile="blender">
-                  <connect>1</connect>
-                  <layer>0</layer>
-                  <roll>-1.798058</roll>
+                  <connect sid="connect" type="bool">1</connect>
+                  <layer sid="layer" type="string">0</layer>
+                  <roll sid="roll" type="float">-1.798058</roll>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
-                <layer>0</layer>
-                <roll>4.961764</roll>
+                <layer sid="layer" type="string">0</layer>
+                <roll sid="roll" type="float">4.961764</roll>
               </technique>
             </extra>
           </node>
@@ -841,33 +831,33 @@
                 <matrix sid="transform">-0.02145438 0.9917459 0.1264109 2.98023e-8 0.1412897 0.1281787 -0.9816353 2.222305 -0.9897358 -0.003199842 -0.1428735 2.98023e-8 0 0 0 1</matrix>
                 <extra>
                   <technique profile="blender">
-                    <connect>1</connect>
-                    <layer>0</layer>
-                    <roll>-3.141593</roll>
-                    <tip_x>0</tip_x>
-                    <tip_y>-1.059953</tip_y>
-                    <tip_z>-0.2846727</tip_z>
+                    <connect sid="connect" type="bool">1</connect>
+                    <layer sid="layer" type="string">0</layer>
+                    <roll sid="roll" type="float">-3.141593</roll>
+                    <tip_x sid="tip_x" type="float">0</tip_x>
+                    <tip_y sid="tip_y" type="float">-1.059953</tip_y>
+                    <tip_z sid="tip_z" type="float">-0.2846727</tip_z>
                   </technique>
                 </extra>
               </node>
               <extra>
                 <technique profile="blender">
-                  <connect>1</connect>
-                  <layer>0</layer>
-                  <roll>1.67329</roll>
+                  <connect sid="connect" type="bool">1</connect>
+                  <layer sid="layer" type="string">0</layer>
+                  <roll sid="roll" type="float">1.67329</roll>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
-                <layer>0</layer>
-                <roll>3.277351</roll>
+                <layer sid="layer" type="string">0</layer>
+                <roll sid="roll" type="float">3.277351</roll>
               </technique>
             </extra>
           </node>
           <extra>
             <technique profile="blender">
-              <layer>0</layer>
+              <layer sid="layer" type="string">0</layer>
             </technique>
           </extra>
         </node>
@@ -882,9 +872,7 @@
           <skeleton>#Armature_torso</skeleton>
           <bind_material>
             <technique_common>
-              <instance_material symbol="Material-material" target="#Material-material">
-                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
-              </instance_material>
+              <instance_material symbol="Material-material" target="#Material-material"/>
             </technique_common>
           </bind_material>
         </instance_controller>
