@@ -51,12 +51,12 @@ private:
     struct BoneInfo
     {
         mat4 boneOffset;
-        mat4 transform;
+        mat4 finalTransform;
 
         BoneInfo()
         {
             boneOffset = mat4();
-            transform = mat4();
+            finalTransform = mat4();
         }
     };
 
@@ -74,9 +74,9 @@ private:
     };
 
     // Animation Transform Functions
-    void CalcInterpScaling(aiVector3D &out, float animTime, const aiNodeAnim *nodeAnim);
-    void CalcInterpRotating(aiQuaternion &out, float animTime, const aiNodeAnim *nodeAnim);
-    void CalcInterpPosition(aiVector3D &out, float animTime, const aiNodeAnim *nodeAnim);
+    void CalcInterpScaling(glm::vec3 &out, float animTime, const aiNodeAnim *nodeAnim);
+    void CalcInterpRotating(glm::quat &out, float animTime, const aiNodeAnim *nodeAnim);
+    void CalcInterpPosition(glm:: vec3 &out, float animTime, const aiNodeAnim *nodeAnim);
     uint FindScaling(float animTime, const aiNodeAnim *nodeAnim);
     uint FindRotation(float animTime, const aiNodeAnim *nodeAnim);
     uint FindPosition(float animTime, const aiNodeAnim *nodeAnim);
@@ -94,6 +94,7 @@ private:
     void LoadBones(const aiMesh *inMesh, vector<VertexBoneData> &bones);
 
     glm::mat4 convertMatrix(const aiMatrix4x4 &mat);
+    glm::vec3 convertVector(const aiVector3D &vec);
     glm::quat convertQuaternion(const aiQuaternion &quat);
 
     GLuint vao,
