@@ -15,8 +15,8 @@ bool fullscreen = false;
 int screenWidth = 800;
 int screenHeight = 600;
 
-const char *modelfn = "../models/knight.dae";
-const char *texfn = "../textures/knight.bmp";
+const char *modelfn = "../models/ninja.dae";
+const char *texfn = "../textures/ninja.bmp";
 
 const char *vertfn = "../shaders/vert.glsl";
 const char *fragfn = "../shaders/frag.glsl";
@@ -124,8 +124,8 @@ int main(int argc, char *argv[]) {
         glm::mat4 model;
 
         glm::mat4 view = glm::lookAt(
-                glm::vec3(0.0f, -20.f, -1.0f),
-                glm::vec3(0.0f, 0.0f, -1.0f),
+                glm::vec3(0.0f, -2.f, -4.5f),
+                glm::vec3(0.0f, 0.0f, -4.5f),
                 glm::vec3(0.0f, 0.0f, 1.0f));
 
         glm::mat4 proj = glm::perspective(3.14f / 4, aspect, 0.001f, 1000.0f);
