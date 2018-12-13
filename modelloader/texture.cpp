@@ -30,6 +30,10 @@ bool Texture::Load(GLuint shader) {
 
     GLint texLoc = glGetUniformLocation(shader, samplerID.c_str());
 
+    if(texLoc < 0){
+        std::cerr << "TexLocation Error: " << texLoc << std::endl;
+    }
+
     glUniform1i(texLoc, textureUnit);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

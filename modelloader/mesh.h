@@ -38,7 +38,7 @@ public:
 
     bool LoadMesh(const std::string &modelfn, GLuint shader, Texture *tex);
 
-    void Render();
+    void Render(float currentFrame, glm::mat4 model, glm::mat4 view, glm::mat4 proj, bool running);
 
     uint NumBones() const{
         return numBones;
@@ -93,8 +93,6 @@ private:
     void LoadBones(const aiMesh *inMesh, vector<VertexBoneData> &bones);
 
     glm::mat4 convertMatrix(const aiMatrix4x4 &mat);
-    glm::vec3 convertVector(const aiVector3D &vec);
-    glm::quat convertQuaternion(const aiQuaternion &quat);
 
     GLuint vao,
             posvb,
@@ -102,6 +100,8 @@ private:
             texvb,
             bonevb,
             indexvb;
+
+    GLint boneLocations[100];
 
     struct MeshData {
         MeshData()

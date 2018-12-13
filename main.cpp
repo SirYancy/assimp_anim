@@ -16,7 +16,7 @@ int screenWidth = 800;
 int screenHeight = 600;
 
 const char *modelfn = "../models/knight.dae";
-const char *texfn = "../textures/cowboy.bmp";
+const char *texfn = "../textures/knight.bmp";
 
 const char *vertfn = "../shaders/vert.glsl";
 const char *fragfn = "../shaders/frag.glsl";
@@ -73,36 +73,35 @@ int main(int argc, char *argv[]) {
     GLuint fragShader;
     CreateShaderProgram(vertShader, fragShader);
 
-    Texture *t = new Texture(GL_TEXTURE0, texfn, "cowboy", 0);
+    Texture *t = new Texture(GL_TEXTURE0, texfn, "charTex", 0);
     t->Load(shaderProgram);
 
     Mesh *m = new Mesh();
     m->LoadMesh(modelfn, shaderProgram, t);
 
-    GLint boneLocations[100];
-
-    for(unsigned int i = 0; i < (sizeof(boneLocations)/sizeof(boneLocations[0])); i++){
-        char name[128];
-        memset(name, 0, sizeof(name));
-        sprintf(name, "global_bones[%d]", i);
-        boneLocations[i] = glGetUniformLocation(shaderProgram, name);
-
-        if(boneLocations[i] < 0){
-            std::cerr << "Bonelocation error: " << i << " " << boneLocations[i] << std::endl;
-        }
-
-    }
-
     glEnable(GL_DEPTH_TEST);
 
     SDL_Event windowEvent;
+    bool isRunning = false;
     bool quit = false;
 
     while (!quit) {
         while (SDL_PollEvent(&windowEvent)) {
             if (windowEvent.type == SDL_QUIT) quit = true;
+            if (windowEvent.type == SDL_KEYDOWN){
+                switch(windowEvent.key.keysym.sym){
+                    case SDLK_w:
+                        isRunning = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
             if (windowEvent.type == SDL_KEYUP) {
                 switch (windowEvent.key.keysym.sym) {
+                    case SDLK_w:
+                        isRunning = false;
+                        break;
                     case SDLK_ESCAPE:
                     case SDLK_q:
                         quit = true;
@@ -120,34 +119,18 @@ int main(int argc, char *argv[]) {
 
         glUseProgram(shaderProgram);
 
-        GLint unicolor = glGetUniformLocation(shaderProgram, "inColor");
         glm::vec3 colVec(0.f, 0.7f, 0.f);
-        glUniform3fv(unicolor, 1, glm::value_ptr(colVec));
 
         glm::mat4 model;
-        GLint uniModel = glGetUniformLocation(shaderProgram, "model");
-        glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model));
 
         glm::mat4 view = glm::lookAt(
                 glm::vec3(0.0f, -20.f, -1.0f),
                 glm::vec3(0.0f, 0.0f, -1.0f),
                 glm::vec3(0.0f, 0.0f, 1.0f));
-        GLint uniView = glGetUniformLocation(shaderProgram, "view");
-        glUniformMatrix4fv(uniView, 1, GL_FALSE, glm::value_ptr(view));
 
         glm::mat4 proj = glm::perspective(3.14f / 4, aspect, 0.001f, 1000.0f);
-        GLint uniProj = glGetUniformLocation(shaderProgram, "proj");
-        glUniformMatrix4fv(uniProj, 1, GL_FALSE, glm::value_ptr(proj));
 
-        vector<mat4> boneTransforms;
-
-        m->BoneTransform(currentFrame, boneTransforms);
-
-        for(int i = 0; i < boneTransforms.size(); i++) {
-            assert(i < 100);
-            glUniformMatrix4fv(boneLocations[i], 1, GL_TRUE, glm::value_ptr(boneTransforms[i]));
-        }
-        m->Render();
+        m->Render(currentFrame, model, view, proj, isRunning);
 
         SDL_GL_SwapWindow(window);
     }

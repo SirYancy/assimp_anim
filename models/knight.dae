@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0</authoring_tool>
     </contributor>
-    <created>2018-12-12T16:36:25</created>
-    <modified>2018-12-12T16:36:25</modified>
+    <created>2018-12-12T21:58:48</created>
+    <modified>2018-12-12T21:58:48</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -24,9 +24,9 @@
       </optics>
       <extra>
         <technique profile="blender">
-          <shiftx sid="shiftx" type="float">0</shiftx>
-          <shifty sid="shifty" type="float">0</shifty>
-          <YF_dofdist sid="YF_dofdist" type="float">0</YF_dofdist>
+          <YF_dofdist>0</YF_dofdist>
+          <shiftx>0</shiftx>
+          <shifty>0</shifty>
         </technique>
       </extra>
     </camera>
@@ -43,60 +43,60 @@
       </technique_common>
       <extra>
         <technique profile="blender">
-          <type sid="type" type="int">0</type>
-          <flag sid="flag" type="int">0</flag>
-          <mode sid="mode" type="int">8192</mode>
-          <gamma sid="blender_gamma" type="float">1</gamma>
-          <red sid="red" type="float">1</red>
-          <green sid="green" type="float">1</green>
-          <blue sid="blue" type="float">1</blue>
-          <shadow_r sid="blender_shadow_r" type="float">0</shadow_r>
-          <shadow_g sid="blender_shadow_g" type="float">0</shadow_g>
-          <shadow_b sid="blender_shadow_b" type="float">0</shadow_b>
-          <energy sid="blender_energy" type="float">1</energy>
-          <dist sid="blender_dist" type="float">29.99998</dist>
-          <spotsize sid="spotsize" type="float">75</spotsize>
-          <spotblend sid="spotblend" type="float">0.15</spotblend>
-          <halo_intensity sid="blnder_halo_intensity" type="float">1</halo_intensity>
-          <att1 sid="att1" type="float">0</att1>
-          <att2 sid="att2" type="float">1</att2>
-          <falloff_type sid="falloff_type" type="int">2</falloff_type>
-          <clipsta sid="clipsta" type="float">1.000799</clipsta>
-          <clipend sid="clipend" type="float">30.002</clipend>
-          <bias sid="bias" type="float">1</bias>
-          <soft sid="soft" type="float">3</soft>
-          <compressthresh sid="compressthresh" type="float">0.04999995</compressthresh>
-          <bufsize sid="bufsize" type="int">2880</bufsize>
-          <samp sid="samp" type="int">3</samp>
-          <buffers sid="buffers" type="int">1</buffers>
-          <filtertype sid="filtertype" type="int">0</filtertype>
-          <bufflag sid="bufflag" type="int">0</bufflag>
-          <buftype sid="buftype" type="int">2</buftype>
-          <ray_samp sid="ray_samp" type="int">1</ray_samp>
-          <ray_sampy sid="ray_sampy" type="int">1</ray_sampy>
-          <ray_sampz sid="ray_sampz" type="int">1</ray_sampz>
-          <ray_samp_type sid="ray_samp_type" type="int">0</ray_samp_type>
-          <area_shape sid="area_shape" type="int">1</area_shape>
-          <area_size sid="area_size" type="float">0.1</area_size>
-          <area_sizey sid="area_sizey" type="float">0.1</area_sizey>
-          <area_sizez sid="area_sizez" type="float">1</area_sizez>
-          <adapt_thresh sid="adapt_thresh" type="float">0.000999987</adapt_thresh>
-          <ray_samp_method sid="ray_samp_method" type="int">1</ray_samp_method>
-          <shadhalostep sid="shadhalostep" type="int">0</shadhalostep>
-          <sun_effect_type sid="sun_effect_type" type="int">0</sun_effect_type>
-          <skyblendtype sid="skyblendtype" type="int">1</skyblendtype>
-          <horizon_brightness sid="horizon_brightness" type="float">1</horizon_brightness>
-          <spread sid="spread" type="float">1</spread>
-          <sun_brightness sid="sun_brightness" type="float">1</sun_brightness>
-          <sun_size sid="sun_size" type="float">1</sun_size>
-          <backscattered_light sid="backscattered_light" type="float">1</backscattered_light>
-          <sun_intensity sid="sun_intensity" type="float">1</sun_intensity>
-          <atm_turbidity sid="atm_turbidity" type="float">2</atm_turbidity>
-          <atm_extinction_factor sid="atm_extinction_factor" type="float">1</atm_extinction_factor>
-          <atm_distance_factor sid="atm_distance_factor" type="float">1</atm_distance_factor>
-          <skyblendfac sid="skyblendfac" type="float">1</skyblendfac>
-          <sky_exposure sid="sky_exposure" type="float">1</sky_exposure>
-          <sky_colorspace sid="sky_colorspace" type="int">0</sky_colorspace>
+          <adapt_thresh>0.000999987</adapt_thresh>
+          <area_shape>1</area_shape>
+          <area_size>0.1</area_size>
+          <area_sizey>0.1</area_sizey>
+          <area_sizez>1</area_sizez>
+          <atm_distance_factor>1</atm_distance_factor>
+          <atm_extinction_factor>1</atm_extinction_factor>
+          <atm_turbidity>2</atm_turbidity>
+          <att1>0</att1>
+          <att2>1</att2>
+          <backscattered_light>1</backscattered_light>
+          <bias>1</bias>
+          <blue>1</blue>
+          <buffers>1</buffers>
+          <bufflag>0</bufflag>
+          <bufsize>2880</bufsize>
+          <buftype>2</buftype>
+          <clipend>30.002</clipend>
+          <clipsta>1.000799</clipsta>
+          <compressthresh>0.04999995</compressthresh>
+          <dist sid="blender_dist">29.99998</dist>
+          <energy sid="blender_energy">1</energy>
+          <falloff_type>2</falloff_type>
+          <filtertype>0</filtertype>
+          <flag>0</flag>
+          <gamma sid="blender_gamma">1</gamma>
+          <green>1</green>
+          <halo_intensity sid="blnder_halo_intensity">1</halo_intensity>
+          <horizon_brightness>1</horizon_brightness>
+          <mode>8192</mode>
+          <ray_samp>1</ray_samp>
+          <ray_samp_method>1</ray_samp_method>
+          <ray_samp_type>0</ray_samp_type>
+          <ray_sampy>1</ray_sampy>
+          <ray_sampz>1</ray_sampz>
+          <red>1</red>
+          <samp>3</samp>
+          <shadhalostep>0</shadhalostep>
+          <shadow_b sid="blender_shadow_b">0</shadow_b>
+          <shadow_g sid="blender_shadow_g">0</shadow_g>
+          <shadow_r sid="blender_shadow_r">0</shadow_r>
+          <sky_colorspace>0</sky_colorspace>
+          <sky_exposure>1</sky_exposure>
+          <skyblendfac>1</skyblendfac>
+          <skyblendtype>1</skyblendtype>
+          <soft>3</soft>
+          <spotblend>0.15</spotblend>
+          <spotsize>75</spotsize>
+          <spread>1</spread>
+          <sun_brightness>1</sun_brightness>
+          <sun_effect_type>0</sun_effect_type>
+          <sun_intensity>1</sun_intensity>
+          <sun_size>1</sun_size>
+          <type>0</type>
         </technique>
       </extra>
     </light>
@@ -172,7 +172,7 @@
   <library_animations>
     <animation id="Armature_torso_pose_matrix">
       <source id="Armature_torso_pose_matrix-input">
-        <float_array id="Armature_torso_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_torso_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_torso_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -204,7 +204,7 @@
     </animation>
     <animation id="Armature_chest_pose_matrix">
       <source id="Armature_chest_pose_matrix-input">
-        <float_array id="Armature_chest_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_chest_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_chest_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -236,7 +236,7 @@
     </animation>
     <animation id="Armature_head_pose_matrix">
       <source id="Armature_head_pose_matrix-input">
-        <float_array id="Armature_head_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_head_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_head_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -268,7 +268,7 @@
     </animation>
     <animation id="Armature_upper_arm_L_pose_matrix">
       <source id="Armature_upper_arm_L_pose_matrix-input">
-        <float_array id="Armature_upper_arm_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_upper_arm_L_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_upper_arm_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -300,7 +300,7 @@
     </animation>
     <animation id="Armature_forearm_L_pose_matrix">
       <source id="Armature_forearm_L_pose_matrix-input">
-        <float_array id="Armature_forearm_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_forearm_L_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_forearm_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -332,7 +332,7 @@
     </animation>
     <animation id="Armature_hand_L_pose_matrix">
       <source id="Armature_hand_L_pose_matrix-input">
-        <float_array id="Armature_hand_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_hand_L_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_hand_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -364,7 +364,7 @@
     </animation>
     <animation id="Armature_thigh_L_pose_matrix">
       <source id="Armature_thigh_L_pose_matrix-input">
-        <float_array id="Armature_thigh_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_thigh_L_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_thigh_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -396,7 +396,7 @@
     </animation>
     <animation id="Armature_Lower_leg_L_pose_matrix">
       <source id="Armature_Lower_leg_L_pose_matrix-input">
-        <float_array id="Armature_Lower_leg_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_Lower_leg_L_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_Lower_leg_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -428,7 +428,7 @@
     </animation>
     <animation id="Armature_Foot_L_pose_matrix">
       <source id="Armature_Foot_L_pose_matrix-input">
-        <float_array id="Armature_Foot_L_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_Foot_L_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_Foot_L_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -460,7 +460,7 @@
     </animation>
     <animation id="Armature_upper_arm_R_pose_matrix">
       <source id="Armature_upper_arm_R_pose_matrix-input">
-        <float_array id="Armature_upper_arm_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_upper_arm_R_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_upper_arm_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -492,7 +492,7 @@
     </animation>
     <animation id="Armature_forearm_R_pose_matrix">
       <source id="Armature_forearm_R_pose_matrix-input">
-        <float_array id="Armature_forearm_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_forearm_R_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_forearm_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -524,7 +524,7 @@
     </animation>
     <animation id="Armature_hand_R_pose_matrix">
       <source id="Armature_hand_R_pose_matrix-input">
-        <float_array id="Armature_hand_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_hand_R_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_hand_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -556,7 +556,7 @@
     </animation>
     <animation id="Armature_thigh_R_pose_matrix">
       <source id="Armature_thigh_R_pose_matrix-input">
-        <float_array id="Armature_thigh_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_thigh_R_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_thigh_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -588,7 +588,7 @@
     </animation>
     <animation id="Armature_lower_leg_R_pose_matrix">
       <source id="Armature_lower_leg_R_pose_matrix-input">
-        <float_array id="Armature_lower_leg_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_lower_leg_R_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_lower_leg_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -620,7 +620,7 @@
     </animation>
     <animation id="Armature_Foot_R_pose_matrix">
       <source id="Armature_Foot_R_pose_matrix-input">
-        <float_array id="Armature_Foot_R_pose_matrix-input-array" count="5">0 0.5416667 1.333333 2.166667 2.875</float_array>
+        <float_array id="Armature_Foot_R_pose_matrix-input-array" count="5">0 0.2916666 0.625 0.9583333 1.208333</float_array>
         <technique_common>
           <accessor source="#Armature_Foot_R_pose_matrix-input-array" count="5" stride="1">
             <param name="TIME" type="float"/>
@@ -712,18 +712,18 @@
               <matrix sid="transform">1 0 0 0 0 1 0 1.37479 0 0 1 0 0 0 0 1</matrix>
               <extra>
                 <technique profile="blender">
-                  <connect sid="connect" type="bool">1</connect>
-                  <layer sid="layer" type="string">0</layer>
-                  <tip_x sid="tip_x" type="float">0</tip_x>
-                  <tip_y sid="tip_y" type="float">0</tip_y>
-                  <tip_z sid="tip_z" type="float">0.7892413</tip_z>
+                  <connect>1</connect>
+                  <layer>0</layer>
+                  <tip_x>0</tip_x>
+                  <tip_y>0</tip_y>
+                  <tip_z>0.7892413</tip_z>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
-                <connect sid="connect" type="bool">1</connect>
-                <layer sid="layer" type="string">0</layer>
+                <connect>1</connect>
+                <layer>0</layer>
               </technique>
             </extra>
           </node>
@@ -735,27 +735,27 @@
                 <matrix sid="transform">0.9864943 -0.009203173 -0.1635372 0 0.05515577 0.9587768 0.2787564 1.836363 0.1542302 -0.2840117 0.9463354 -2.38419e-7 0 0 0 1</matrix>
                 <extra>
                   <technique profile="blender">
-                    <connect sid="connect" type="bool">1</connect>
-                    <layer sid="layer" type="string">0</layer>
-                    <roll sid="roll" type="float">0.4099608</roll>
-                    <tip_x sid="tip_x" type="float">0.4724364</tip_x>
-                    <tip_y sid="tip_y" type="float">-0.1029668</tip_y>
-                    <tip_z sid="tip_z" type="float">-0.2604457</tip_z>
+                    <connect>1</connect>
+                    <layer>0</layer>
+                    <roll>0.4099608</roll>
+                    <tip_x>0.4724364</tip_x>
+                    <tip_y>-0.1029668</tip_y>
+                    <tip_z>-0.2604457</tip_z>
                   </technique>
                 </extra>
               </node>
               <extra>
                 <technique profile="blender">
-                  <connect sid="connect" type="bool">1</connect>
-                  <layer sid="layer" type="string">0</layer>
-                  <roll sid="roll" type="float">0.221312</roll>
+                  <connect>1</connect>
+                  <layer>0</layer>
+                  <roll>0.221312</roll>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
-                <layer sid="layer" type="string">0</layer>
-                <roll sid="roll" type="float">2.137331</roll>
+                <layer>0</layer>
+                <roll>2.137331</roll>
               </technique>
             </extra>
           </node>
@@ -767,27 +767,27 @@
                 <matrix sid="transform">-0.0214541 0.9909527 0.1324839 5.96046e-8 -0.1412898 0.1281792 -0.9816349 2.222306 -0.9897355 -0.0397788 0.1372616 -5.96046e-8 0 0 0 1</matrix>
                 <extra>
                   <technique profile="blender">
-                    <connect sid="connect" type="bool">1</connect>
-                    <layer sid="layer" type="string">0</layer>
-                    <roll sid="roll" type="float">-3.141593</roll>
-                    <tip_x sid="tip_x" type="float">0</tip_x>
-                    <tip_y sid="tip_y" type="float">-1.059953</tip_y>
-                    <tip_z sid="tip_z" type="float">-0.2846732</tip_z>
+                    <connect>1</connect>
+                    <layer>0</layer>
+                    <roll>-3.141593</roll>
+                    <tip_x>0</tip_x>
+                    <tip_y>-1.059953</tip_y>
+                    <tip_z>-0.2846732</tip_z>
                   </technique>
                 </extra>
               </node>
               <extra>
                 <technique profile="blender">
-                  <connect sid="connect" type="bool">1</connect>
-                  <layer sid="layer" type="string">0</layer>
-                  <roll sid="roll" type="float">1.424956</roll>
+                  <connect>1</connect>
+                  <layer>0</layer>
+                  <roll>1.424956</roll>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
-                <layer sid="layer" type="string">0</layer>
-                <roll sid="roll" type="float">2.983235</roll>
+                <layer>0</layer>
+                <roll>2.983235</roll>
               </technique>
             </extra>
           </node>
@@ -799,27 +799,27 @@
                 <matrix sid="transform">0.5692483 -0.2840611 -0.7715348 2.38419e-7 0.1749492 0.9587768 -0.2239197 1.836362 0.8033364 -0.007513541 0.5954782 0 0 0 0 1</matrix>
                 <extra>
                   <technique profile="blender">
-                    <connect sid="connect" type="bool">1</connect>
-                    <layer sid="layer" type="string">0</layer>
-                    <roll sid="roll" type="float">3.199527</roll>
-                    <tip_x sid="tip_x" type="float">-0.4724364</tip_x>
-                    <tip_y sid="tip_y" type="float">-0.1029668</tip_y>
-                    <tip_z sid="tip_z" type="float">-0.2604457</tip_z>
+                    <connect>1</connect>
+                    <layer>0</layer>
+                    <roll>3.199527</roll>
+                    <tip_x>-0.4724364</tip_x>
+                    <tip_y>-0.1029668</tip_y>
+                    <tip_z>-0.2604457</tip_z>
                   </technique>
                 </extra>
               </node>
               <extra>
                 <technique profile="blender">
-                  <connect sid="connect" type="bool">1</connect>
-                  <layer sid="layer" type="string">0</layer>
-                  <roll sid="roll" type="float">-1.798058</roll>
+                  <connect>1</connect>
+                  <layer>0</layer>
+                  <roll>-1.798058</roll>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
-                <layer sid="layer" type="string">0</layer>
-                <roll sid="roll" type="float">4.961764</roll>
+                <layer>0</layer>
+                <roll>4.961764</roll>
               </technique>
             </extra>
           </node>
@@ -831,33 +831,33 @@
                 <matrix sid="transform">-0.02145438 0.9917459 0.1264109 2.98023e-8 0.1412897 0.1281787 -0.9816353 2.222305 -0.9897358 -0.003199842 -0.1428735 2.98023e-8 0 0 0 1</matrix>
                 <extra>
                   <technique profile="blender">
-                    <connect sid="connect" type="bool">1</connect>
-                    <layer sid="layer" type="string">0</layer>
-                    <roll sid="roll" type="float">-3.141593</roll>
-                    <tip_x sid="tip_x" type="float">0</tip_x>
-                    <tip_y sid="tip_y" type="float">-1.059953</tip_y>
-                    <tip_z sid="tip_z" type="float">-0.2846727</tip_z>
+                    <connect>1</connect>
+                    <layer>0</layer>
+                    <roll>-3.141593</roll>
+                    <tip_x>0</tip_x>
+                    <tip_y>-1.059953</tip_y>
+                    <tip_z>-0.2846727</tip_z>
                   </technique>
                 </extra>
               </node>
               <extra>
                 <technique profile="blender">
-                  <connect sid="connect" type="bool">1</connect>
-                  <layer sid="layer" type="string">0</layer>
-                  <roll sid="roll" type="float">1.67329</roll>
+                  <connect>1</connect>
+                  <layer>0</layer>
+                  <roll>1.67329</roll>
                 </technique>
               </extra>
             </node>
             <extra>
               <technique profile="blender">
-                <layer sid="layer" type="string">0</layer>
-                <roll sid="roll" type="float">3.277351</roll>
+                <layer>0</layer>
+                <roll>3.277351</roll>
               </technique>
             </extra>
           </node>
           <extra>
             <technique profile="blender">
-              <layer sid="layer" type="string">0</layer>
+              <layer>0</layer>
             </technique>
           </extra>
         </node>

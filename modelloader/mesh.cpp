@@ -6,6 +6,7 @@
 #include "mesh.h"
 
 #define GLM_FORCE_RADIANS
+#include "../glm/gtc/constants.hpp"
 #include "../glm/gtc/type_ptr.hpp"
 
 Mesh::Mesh() {}
@@ -108,6 +109,17 @@ bool Mesh::InitFromScene(const aiScene *scene) {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexvb);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices[0])*indices.size(), indices.data(), GL_STATIC_DRAW);
 
+    for(unsigned int i = 0; i < (sizeof(boneLocations) / sizeof(boneLocations[0])); i++){
+        char name[128];
+        memset(name, 0, sizeof(name));
+        sprintf(name, "global_bones[%d]", i);
+        boneLocations[i] = glGetUniformLocation(shader, name);
+
+        if(boneLocations[i] < 0){
+            std::cerr << "BoneLocation error: " << i << " " << boneLocations[i] << std::endl;
+        }
+    }
+
     return glGetError() != GL_NO_ERROR;
 }
 
@@ -166,8 +178,36 @@ void Mesh::LoadBones(const aiMesh *inMesh, vector<Mesh::VertexBoneData> &bones) 
     }
 }
 
-void Mesh::Render() {
+void Mesh::Render(float currentFrame, glm::mat4 model, glm::mat4 view, glm::mat4 proj, bool running) {
     glBindVertexArray(vao);
+
+    vector<mat4> boneTransforms;
+
+    if(!running){currentFrame = 0.9f;}
+
+    BoneTransform(currentFrame, boneTransforms);
+
+    for (int i = 0; i < boneTransforms.size(); i++) {
+        assert(i < 100);
+        glUniformMatrix4fv(boneLocations[i], 1, GL_TRUE, glm::value_ptr(boneTransforms[i]));
+    }
+
+    /**TODO Here we fix the weirdness that happens in the animation transforms These can be tweaked*/
+    model = glm::translate(model, vec3(0, 0, -5));
+    model = glm::rotate(model, glm::pi<float>(), vec3(0,1,0));
+
+    GLint unicolor = glGetUniformLocation(shader, "inColor");
+    glm::vec3 colVec(0.f, 0.7f, 0.f);
+    glUniform3fv(unicolor, 1, glm::value_ptr(colVec));
+
+    GLint uniModel = glGetUniformLocation(shader, "model");
+    glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model));
+
+    GLint uniView = glGetUniformLocation(shader, "view");
+    glUniformMatrix4fv(uniView, 1, GL_FALSE, glm::value_ptr(view));
+
+    GLint uniProj = glGetUniformLocation(shader, "proj");
+    glUniformMatrix4fv(uniProj, 1, GL_FALSE, glm::value_ptr(proj));
 
     glDrawElements(GL_TRIANGLES, mesh.numIndices, GL_UNSIGNED_INT, 0);
 
@@ -177,19 +217,6 @@ void Mesh::Render() {
 glm::mat4 Mesh::convertMatrix(const aiMatrix4x4 &mat) {
     return (glm::make_mat4(&mat.a1));
 }
-
-glm::quat Mesh::convertQuaternion(const aiQuaternion &quat) {
-    return {
-        quat.w, quat.x, quat.y, quat.z
-    };
-}
-
-glm::vec3 Mesh::convertVector(const aiVector3D &vec) {
-    return {
-        vec.x, vec.y, vec.z
-    };
-}
-
 
 void Mesh::BoneTransform(float seconds, vector<mat4> &transforms) {
     aiMatrix4x4 identity = aiMatrix4x4(); // Sets to identity
@@ -236,7 +263,7 @@ void Mesh::ReadNodeHierarchy(float animTime, const aiNode *node, const aiMatrix4
         CalcInterpPosition(translation, animTime, nodeAnim);
         aiMatrix4x4::Translation(translation, translateMat);
 
-        nodeTransformation = scalingMat * rotateMat * translateMat;
+        nodeTransformation = translateMat * rotateMat * scalingMat;// scalingMat * rotateMat * translateMat;
     }
 
     aiMatrix4x4 globalTransformation = parentTransform * nodeTransformation;
