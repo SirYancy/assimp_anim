@@ -183,7 +183,7 @@ void Mesh::Render(float currentFrame, glm::mat4 model, glm::mat4 view, glm::mat4
 
     vector<mat4> boneTransforms;
 
-    if(!running){currentFrame = 0.9f;}
+    if(!running){currentFrame = 0.4f;}
 
     BoneTransform(currentFrame, boneTransforms);
 
